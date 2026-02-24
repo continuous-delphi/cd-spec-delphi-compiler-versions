@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://continuous-delphi.github.io/cd-spec-delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json",
+  "title": "Continuous Delphi - Delphi Compiler Versions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "dataVersion",
+    "versions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "description": "Schema version for this document (semantic versioning).",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": [
+        "1.0.0"
+      ]
+    },
+    "dataVersion": {
+      "type": "string",
+      "description": "Dataset version for the contents of this file (semantic versioning). Independent of schemaVersion.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": [
+        "0.1.0"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "description": "Optional metadata about the dataset generation and scope.",
+      "additionalProperties": true,
+      "properties": {
+        "generated_utc_date": {
+          "type": "string",
+          "description": "UTC date (YYYY-MM-DD) when this file was generated or last updated.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "examples": [
+            "2026-02-23"
+          ]
+        },
+        "scope": {
+          "type": "object",
+          "description": "Scope rules for inclusion/exclusion.",
+          "additionalProperties": true
+        },
+        "sources": {
+          "type": "array",
+          "description": "Source references used to construct the mapping.",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            [
+              "https://docwiki.embarcadero.com/RADStudio/en/Compiler_Versions"
+            ]
+          ]
+        }
+      }
+    },
+    "versions": {
+      "type": "array",
+      "description": "Ordered list of Delphi compiler version entries.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/versionEntry"
+      }
+    }
+  },
+  "$defs": {
+    "versionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ver",
+        "product_name",
+        "aliases",
+        "compilerVersion"
+      ],
+      "properties": {
+        "ver": {
+          "type": "string",
+          "description": "Canonical Delphi compiler conditional define symbol.",
+          "pattern": "^VER\\d+$",
+          "examples": [
+            "VER370"
+          ]
+        },
+        "compilerVersion": {
+          "type": "string",
+          "description": "CompilerVersion value preserving original notation (e.g., \"37.0\"). Stored as string to retain the decimal form exactly as Embarcadero defines it.",
+          "pattern": "^\\d+\\.\\d+$",
+          "examples": [
+            "37.0"
+          ]
+        },
+        "product_name": {
+          "type": "string",
+          "description": "Official product name for this Delphi release.",
+          "minLength": 1,
+          "examples": [
+            "Delphi 13 Florence"
+          ]
+        },
+        "package_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Package version identifier.",
+          "examples": [
+            "370"
+          ]
+        },
+        "bds_reg_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "BDS registry version string.",
+          "pattern": "^\\d+(\\.\\d+)?$",
+          "examples": [
+            "37.0"
+          ]
+        },
+        "registry_key_relpath": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Relative registry key path beneath HKCU or HKLM.",
+          "examples": [
+            "\\Software\\Embarcadero\\BDS\\37.0"
+          ]
+        },
+        "aliases": {
+          "type": "array",
+          "description": "All identifiers that resolve to this entry. The canonical ver value must be included and should be listed first by convention.",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            [
+              "VER370",
+              "Delphi 13",
+              "Delphi 13 Florence",
+              "BDS 37.0",
+              "CompilerVersion 37.0"
+            ]
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "description": "Optional notes for special cases.",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schemaVersion": "1.0.0",
+      "dataVersion": "0.1.0",
+      "versions": [
+        {
+          "ver": "VER370",
+          "compilerVersion": "37.0",
+          "product_name": "Delphi 13 Florence",
+          "package_version": "370",
+          "bds_reg_version": "37.0",
+          "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\37.0",
+          "aliases": [
+            "VER370",
+            "Delphi 13",
+            "Delphi 13 Florence",
+            "BDS 37.0",
+            "CompilerVersion 37.0"
+          ],
+          "notes": []
+        }
+      ]
+    }
+  ]
+}
