@@ -1,4 +1,8 @@
 # cd-spec-delphi-compiler-versions
+![Status](https://img.shields.io/badge/status-incubator-orange)
+![Schema](https://img.shields.io/badge/schema-1.0.0-blue)
+![Data](https://img.shields.io/badge/data-0.1.0-blue)
+![Platform](https://img.shields.io/badge/platform-windows-lightgrey)
 
 Canonical Delphi compiler version mapping based on official `VER###` symbols.
 
