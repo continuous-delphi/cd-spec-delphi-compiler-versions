@@ -12,14 +12,12 @@ resolve, normalize, and compare Delphi compiler versions. The canonical identifi
 
 ## Scope
 
-- Includes Delphi versions starting at `VER90` (Delphi 2).
-- Excludes C++Builder-only entries.
-- Excludes .NET-only Delphi compiler versions.
-- Includes registry metadata required for deterministic toolchain discovery.
+- For Delphi versions 2 and above. (Starts at `VER90`)
+- Excludes C++Builder and .NET-only entries.
+- Includes registry metadata required for toolchain discovery.
 
 This repository is **data-first**. The JSON file under `data/` is the single source of truth.
-Generated code and downstream tooling must derive from that dataset. Hardcoding version tables
-across multiple tools is not acceptable -- all tooling must depend on this canonical dataset.
+All `Continuous Delphi` generated code and downstream tooling will derive from that dataset.
 
 ## Repository Structure
 
@@ -27,7 +25,7 @@ across multiple tools is not acceptable -- all tooling must depend on this canon
 schemas/
   1.0.0/
     delphi-compiler-versions.schema.json    # immutable versioned schema
-  delphi-compiler-versions.schema.json      # latest convenience copy
+  delphi-compiler-versions.schema.json      # latest version / convenience copy offering a stable source
 data/
   delphi-compiler-versions.json             # current dataset
 ```
@@ -35,13 +33,15 @@ data/
 - The schema is versioned and immutable once published. The `$id` inside each schema file
   matches its versioned canonical path.
 - The dataset is versioned independently via `dataVersion`.
-- Schema and data evolve separately under the Continuous Delphi versioning policy.
+- Schema and data evolve separately under the `Continuous Delphi` versioning policy.
 
 Canonical schema `$id`:
 
 ```
 https://continuous-delphi.github.io/cd-spec-delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json
 ```
+
+Note: The schema $id URI is currently being served via `GitHub Pages` (which has been enabled on this repository). GitHub Pages must remain active for these URIs to resolve.
 
 ## Versioning Model
 
@@ -63,7 +63,7 @@ Dataset version bump rules:
 - MINOR -- new Delphi releases added.
 - MAJOR -- breaking structural or semantic changes to existing entries.
 
-Initial dataset release: `0.1.0`.
+Current `incubator` dataset release: `0.1.0`.
 
 ## Data Model
 
@@ -84,8 +84,8 @@ Each entry includes:
 - `aliases` -- all identifiers that resolve to this entry
 - `notes` -- clarifications or historical remarks
 
-Install paths are intentionally excluded from the specification. Tooling must resolve
-installation directories via the registry `RootDir` value.
+Install paths are intentionally excluded from the specification. 
+Tooling should resolve installation directories via the registry `RootDir` value.
 
 Schema changes follow the versioning policy defined in `docs/versioning-policy.md`. Changes
 to existing fields or keys are breaking changes and require a MAJOR schema version increment.
@@ -96,7 +96,7 @@ This specification exists to ensure that:
 
 - `cd-ci-toolchain` can normalize installed Delphi versions.
 - CI build actions can select toolchains deterministically.
-- Modernization tooling can reason about compiler capabilities.
+- Delphi tooling can reason about compiler capabilities.
 - Alias resolution (`Delphi 13`, `BDS 37.0`, `VER370`, etc.) is consistent across all tools.
 - Registry-based discovery logic is centralized and reproducible.
 
