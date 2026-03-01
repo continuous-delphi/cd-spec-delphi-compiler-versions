@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/github/license/continuous-delphi/delphi-compiler-versions)
 ![Pages](https://img.shields.io/website?url=https%3A%2F%2Fcontinuous-delphi.github.io%2Fdelphi-compiler-versions%2F&label=github%20pages)
 ![Schema](https://img.shields.io/badge/schema-1.0.0-blue)
-![Data](https://img.shields.io/badge/data-0.1.0-blue)
+![Data](https://img.shields.io/badge/data-0.3.0-blue)
 ![Continuous Delphi](https://img.shields.io/badge/org-continuous--delphi-red)
 
 Canonical Delphi compiler version mapping based on official `VER###` symbols.
@@ -20,6 +20,7 @@ resolve, normalize, and compare Delphi compiler versions. The canonical identifi
 -   For Delphi versions 2 and above (starts at `VER90`)
 -   Excludes C++Builder and .NET-only entries
 -   Includes registry metadata required for toolchain discovery
+-   Includes supported build systems and target platforms per version family
 
 This repository is **data-first**. The JSON file under `data/` is the single source of truth.
 All `Continuous Delphi` generated code and downstream tooling will derive from that dataset.
@@ -49,16 +50,16 @@ Canonical schema `$id`:
 https://continuous-delphi.github.io/delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json
 ```
 
-Note: The schema $id URI is currently being served via `GitHub Pages` (which has been enabled on this repository). GitHub Pages must remain active for these URIs to resolve.
+Note: The schema `$id` URI is currently being served via `GitHub Pages` (which has been enabled
+on this repository). GitHub Pages must remain active for these URIs to resolve.
 
 ## Entity and Property Naming
 
 This repository follows the Continuous Delphi org-wide naming standard:
 
 -   All JSON keys use lowerCamelCase
--   Acronyms are treated as words (utcDate, bdsRegVersion)
--   No snake_case keys
--   Arrays are used for collections (aliases: \[\])
+-   Acronyms are treated as words (e.g. `utcDate`, `regKeyRelativePath`)
+-   Arrays are used for collections (`aliases: []`, `notes: []`)
 
 ### Dataset
 
@@ -75,18 +76,59 @@ Primary file:
 data/delphi-compiler-versions.json
 ```
 
-Each entry includes:
+### Top-level fields
 
-- `verDefine` -- canonical `VER###` symbol (primary identifier, listed first in `aliases` by convention)
-- `compilerVersion` -- string preserving the exact `CompilerVersion` notation (e.g., `"37.0"`)
+- `schemaVersion` -- schema contract version (e.g. `"1.0.0"`)
+- `dataVersion` -- dataset content version (e.g. `"0.3.0"`)
+- `meta` -- optional metadata object; see below
+- `versions` -- ordered array of version entries
+
+### `meta` fields
+
+- `generatedUtcDate` -- UTC date the file was last updated (`YYYY-MM-DD`)
+- `scope` -- inclusion/exclusion rules (informational)
+- `registryResolutionNotes` -- guidance on hive-agnostic registry discovery
+- `platformNotes` -- policy notes for `supportedPlatforms` interpretation
+
+### `versionEntry` fields
+
+- `verDefine` -- canonical `VER###` symbol (primary identifier)
+- `compilerVersion` -- string preserving the exact `CompilerVersion` value (e.g. `"37.0"`)
 - `productName` -- official product name
-- `packageVersion` -- package version identifier
-- `regKeyRelativePath` -- relative registry key path for toolchain discovery
-- `aliases` -- List of identifiers that resolve to this entry
-- `notes` -- clarifications or historical remarks
+- `packageVersion` -- package version identifier (nullable)
+- `regKeyRelativePath` -- relative registry key path beneath HKCU or HKLM (nullable)
+- `supportedBuildSystems` -- build systems supported by this version family; see below
+- `supportedPlatforms` -- target platforms supported by this version family; see below
+- `aliases` -- additional identifiers that resolve to this entry
+- `notes` -- clarifications, historical remarks, or sub-version platform introductions
 
-Install paths are intentionally excluded from the specification. 
+Install paths are intentionally excluded from the specification.
 Tooling should resolve installation directories via the registry `RootDir` value.
+
+### `supportedBuildSystems`
+
+An array of one or more of the following values:
+
+| Value | Meaning |
+|-------|---------|
+| `DCC` | Direct command-line compiler invocation via `dcc32.exe` / `dcc64.exe` |
+| `MSBuild` | `.dproj`-based builds via MSBuild (introduced in Delphi 2007) |
+
+Entries prior to Delphi 2007 (`VER180` and earlier) support `DCC` only. Delphi 2007
+(`VER185`) and later support both.
+
+### `supportedPlatforms`
+
+An array of platform identifiers representing the **union of all platforms supported across
+all point releases within the version family**. Where a platform was introduced in a sub-version
+point release (rather than the initial release of the version family), this is noted in the
+entry's `notes` array.
+
+Valid platform values: `Win32`, `Win64`, `Win64ARMEC`, `macOS32`, `macOS64`, `macOSARM64`,
+`Linux64`, `iOS`, `iOSSimulator`, `Android32`, `Android64`.
+
+Only shipping, fully supported targets are included. Experimental or preview support
+(as defined by Embarcadero's own release framing) is excluded.
 
 ------------------------------------------------------------------------
 
@@ -94,7 +136,8 @@ Tooling should resolve installation directories via the registry `RootDir` value
 
 This specification exists to ensure that:
 
-- `delphi-toolchain-*` can normalize installed Delphi versions.
+- `delphi-toolchain-*` tooling can normalize installed Delphi versions and assess
+  build machine readiness per build system and target platform.
 - CI build actions can select toolchains deterministically.
 - Delphi tooling can reason about compiler capabilities.
 - Alias resolution (`Delphi 13`, `BDS 37.0`, `VER370`, etc.) is consistent across all tools.
