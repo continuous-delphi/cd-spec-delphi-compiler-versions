@@ -1,30 +1,28 @@
 {
   "schemaVersion": "1.0.0",
-  "dataVersion": "0.1.0",
+  "dataVersion": "0.2.0",
   "meta": {
-    "generated_utc_date": "2026-02-23",
+    "generatedUtcDate": "2026-02-23",
     "scope": {
-      "include_from_ver": "VER90",
+      "includeFromVer": "VER90",
       "excluded": [
         "C++Builder-only entries",
         ".NET-only Delphi entries"
       ]
     },
-    "registry_resolution_notes": [
-      "registry_key_relpath is hive-agnostic. Discovery tooling should check HKCU first, then HKLM.",
+    "registryResolutionNotes": [
+      "regKeyRelativePath is hive-agnostic. Discovery tooling should check HKCU first, then HKLM.",
       "Installation directory is typically available under <key>\\RootDir for Delphi 5+; Delphi 2-4 do not set RootDir."
     ]
   },
   "versions": [
     {
-      "ver": "VER90",
+      "verDefine": "VER90",
       "compilerVersion": "9.0",
-      "product_name": "Delphi 2",
-      "package_version": "20",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\2.0",
+      "productName": "Delphi 2",
+      "packageVersion": "20",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\2.0",
       "aliases": [
-        "VER90",
         "Delphi2",
         "D2"
       ],
@@ -34,14 +32,12 @@
       ]
     },
     {
-      "ver": "VER100",
+      "verDefine": "VER100",
       "compilerVersion": "10.0",
-      "product_name": "Delphi 3",
-      "package_version": "30",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\3.0",
+      "productName": "Delphi 3",
+      "packageVersion": "30",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\3.0",
       "aliases": [
-        "VER100",
         "Delphi3",
         "D3"
       ],
@@ -51,14 +47,12 @@
       ]
     },
     {
-      "ver": "VER120",
+      "verDefine": "VER120",
       "compilerVersion": "12.0",
-      "product_name": "Delphi 4",
-      "package_version": "40",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\4.0",
+      "productName": "Delphi 4",
+      "packageVersion": "40",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\4.0",
       "aliases": [
-        "VER120",
         "Delphi4",
         "D4"
       ],
@@ -68,14 +62,12 @@
       ]
     },
     {
-      "ver": "VER130",
+      "verDefine": "VER130",
       "compilerVersion": "13.0",
-      "product_name": "Delphi 5",
-      "package_version": "50",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\5.0",
+      "productName": "Delphi 5",
+      "packageVersion": "50",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\5.0",
       "aliases": [
-        "VER130",
         "Delphi5",
         "D5"
       ],
@@ -84,70 +76,60 @@
       ]
     },
     {
-      "ver": "VER140",
+      "verDefine": "VER140",
       "compilerVersion": "14.0",
-      "product_name": "Delphi 6",
-      "package_version": "60",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\6.0",
+      "productName": "Delphi 6",
+      "packageVersion": "60",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\6.0",
       "aliases": [
-        "VER140",
         "Delphi6",
         "D6"
       ],
       "notes": []
     },
     {
-      "ver": "VER150",
+      "verDefine": "VER150",
       "compilerVersion": "15.0",
-      "product_name": "Delphi 7",
-      "package_version": "70",
-      "bds_reg_version": null,
-      "registry_key_relpath": "\\Software\\Borland\\Delphi\\7.0",
+      "productName": "Delphi 7",
+      "packageVersion": "70",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\7.0",
       "aliases": [
-        "VER150",
         "Delphi7",
         "D7"
       ],
       "notes": []
     },
     {
-      "ver": "VER170",
+      "verDefine": "VER170",
       "compilerVersion": "17.0",
-      "product_name": "Delphi 2005",
-      "package_version": "90",
-      "bds_reg_version": "3.0",
-      "registry_key_relpath": "\\Software\\Borland\\BDS\\3.0",
+      "productName": "Delphi 2005",
+      "packageVersion": "90",
+      "regKeyRelativePath": "\\Software\\Borland\\BDS\\3.0",
       "aliases": [
-        "VER170",
         "Delphi2005",
         "D2005"
       ],
       "notes": []
     },
     {
-      "ver": "VER180",
+      "verDefine": "VER180",
       "compilerVersion": "18.0",
-      "product_name": "Delphi 2006",
-      "package_version": "100",
-      "bds_reg_version": "4.0",
-      "registry_key_relpath": "\\Software\\Borland\\BDS\\4.0",
+      "productName": "Delphi 2006",
+      "packageVersion": "100",
+      "regKeyRelativePath": "\\Software\\Borland\\BDS\\4.0",
       "aliases": [
-        "VER180",
         "Delphi2006",
         "D2006"
       ],
       "notes": []
     },
     {
-      "ver": "VER185",
+      "verDefine": "VER185",
       "compilerVersion": "18.5",
-      "product_name": "Delphi 2007",
-      "package_version": "110",
-      "bds_reg_version": "5.0",
-      "registry_key_relpath": "\\Software\\Borland\\BDS\\5.0",
+      "productName": "Delphi 2007",
+      "packageVersion": "110",
+      "regKeyRelativePath": "\\Software\\Borland\\BDS\\5.0",
       "aliases": [
-        "VER185",
         "Delphi2007",
         "D2007"
       ],
@@ -156,114 +138,98 @@
       ]
     },
     {
-      "ver": "VER200",
+      "verDefine": "VER200",
       "compilerVersion": "20.0",
-      "product_name": "Delphi 2009",
-      "package_version": "120",
-      "bds_reg_version": "6.0",
-      "registry_key_relpath": "\\Software\\CodeGear\\BDS\\6.0",
+      "productName": "Delphi 2009",
+      "packageVersion": "120",
+      "regKeyRelativePath": "\\Software\\CodeGear\\BDS\\6.0",
       "aliases": [
-        "VER200",
         "Delphi2009",
         "D2009"
       ],
       "notes": []
     },
     {
-      "ver": "VER210",
+      "verDefine": "VER210",
       "compilerVersion": "21.0",
-      "product_name": "Delphi 2010",
-      "package_version": "140",
-      "bds_reg_version": "7.0",
-      "registry_key_relpath": "\\Software\\CodeGear\\BDS\\7.0",
+      "productName": "Delphi 2010",
+      "packageVersion": "140",
+      "regKeyRelativePath": "\\Software\\CodeGear\\BDS\\7.0",
       "aliases": [
-        "VER210",
         "Delphi2010",
         "D2010"
       ],
       "notes": []
     },
     {
-      "ver": "VER220",
+      "verDefine": "VER220",
       "compilerVersion": "22.0",
-      "product_name": "Delphi XE",
-      "package_version": "150",
-      "bds_reg_version": "8.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\8.0",
+      "productName": "Delphi XE",
+      "packageVersion": "150",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\8.0",
       "aliases": [
-        "VER220",
         "DelphiXE",
         "XE"
       ],
       "notes": []
     },
     {
-      "ver": "VER230",
+      "verDefine": "VER230",
       "compilerVersion": "23.0",
-      "product_name": "Delphi XE2",
-      "package_version": "160",
-      "bds_reg_version": "9.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\9.0",
+      "productName": "Delphi XE2",
+      "packageVersion": "160",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\9.0",
       "aliases": [
-        "VER230",
         "DelphiXE2",
         "XE2"
       ],
       "notes": [
-        "DocWiki notes FireMonkey package versions 160/161 for XE2 updates; package_version here reflects the main table value."
+        "DocWiki notes FireMonkey package versions 160/161 for XE2 updates; packageVersion here reflects the main table value."
       ]
     },
     {
-      "ver": "VER240",
+      "verDefine": "VER240",
       "compilerVersion": "24.0",
-      "product_name": "Delphi XE3",
-      "package_version": "170",
-      "bds_reg_version": "10.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\10.0",
+      "productName": "Delphi XE3",
+      "packageVersion": "170",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\10.0",
       "aliases": [
-        "VER240",
         "DelphiXE3",
         "XE3"
       ],
       "notes": []
     },
     {
-      "ver": "VER250",
+      "verDefine": "VER250",
       "compilerVersion": "25.0",
-      "product_name": "Delphi XE4",
-      "package_version": "180",
-      "bds_reg_version": "11.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\11.0",
+      "productName": "Delphi XE4",
+      "packageVersion": "180",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\11.0",
       "aliases": [
-        "VER250",
         "DelphiXE4",
         "XE4"
       ],
       "notes": []
     },
     {
-      "ver": "VER260",
+      "verDefine": "VER260",
       "compilerVersion": "26.0",
-      "product_name": "Delphi XE5",
-      "package_version": "190",
-      "bds_reg_version": "12.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\12.0",
+      "productName": "Delphi XE5",
+      "packageVersion": "190",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\12.0",
       "aliases": [
-        "VER260",
         "DelphiXE5",
         "XE5"
       ],
       "notes": []
     },
     {
-      "ver": "VER270",
+      "verDefine": "VER270",
       "compilerVersion": "27.0",
-      "product_name": "Delphi XE6",
-      "package_version": "200",
-      "bds_reg_version": "14.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\14.0",
+      "productName": "Delphi XE6",
+      "packageVersion": "200",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\14.0",
       "aliases": [
-        "VER270",
         "DelphiXE6",
         "XE6"
       ],
@@ -272,42 +238,36 @@
       ]
     },
     {
-      "ver": "VER280",
+      "verDefine": "VER280",
       "compilerVersion": "28.0",
-      "product_name": "Delphi XE7",
-      "package_version": "210",
-      "bds_reg_version": "15.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\15.0",
+      "productName": "Delphi XE7",
+      "packageVersion": "210",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\15.0",
       "aliases": [
-        "VER280",
         "DelphiXE7",
         "XE7"
       ],
       "notes": []
     },
     {
-      "ver": "VER290",
+      "verDefine": "VER290",
       "compilerVersion": "29.0",
-      "product_name": "Delphi XE8",
-      "package_version": "220",
-      "bds_reg_version": "16.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\16.0",
+      "productName": "Delphi XE8",
+      "packageVersion": "220",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\16.0",
       "aliases": [
-        "VER290",
         "DelphiXE8",
         "XE8"
       ],
       "notes": []
     },
     {
-      "ver": "VER300",
+      "verDefine": "VER300",
       "compilerVersion": "30.0",
-      "product_name": "Delphi 10 Seattle",
-      "package_version": "230",
-      "bds_reg_version": "17.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\17.0",
+      "productName": "Delphi 10 Seattle",
+      "packageVersion": "230",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\17.0",
       "aliases": [
-        "VER300",
         "Delphi 10",
         "Seattle",
         "10 Seattle"
@@ -315,14 +275,12 @@
       "notes": []
     },
     {
-      "ver": "VER310",
+      "verDefine": "VER310",
       "compilerVersion": "31.0",
-      "product_name": "Delphi 10.1 Berlin",
-      "package_version": "240",
-      "bds_reg_version": "18.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\18.0",
+      "productName": "Delphi 10.1 Berlin",
+      "packageVersion": "240",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\18.0",
       "aliases": [
-        "VER310",
         "Delphi 10.1",
         "Berlin",
         "10.1 Berlin"
@@ -330,14 +288,12 @@
       "notes": []
     },
     {
-      "ver": "VER320",
+      "verDefine": "VER320",
       "compilerVersion": "32.0",
-      "product_name": "Delphi 10.2 Tokyo",
-      "package_version": "250",
-      "bds_reg_version": "19.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\19.0",
+      "productName": "Delphi 10.2 Tokyo",
+      "packageVersion": "250",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\19.0",
       "aliases": [
-        "VER320",
         "Delphi 10.2",
         "Tokyo",
         "10.2 Tokyo"
@@ -345,14 +301,12 @@
       "notes": []
     },
     {
-      "ver": "VER330",
+      "verDefine": "VER330",
       "compilerVersion": "33.0",
-      "product_name": "Delphi 10.3 Rio",
-      "package_version": "260",
-      "bds_reg_version": "20.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\20.0",
+      "productName": "Delphi 10.3 Rio",
+      "packageVersion": "260",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\20.0",
       "aliases": [
-        "VER330",
         "Delphi 10.3",
         "Rio",
         "10.3 Rio"
@@ -360,14 +314,12 @@
       "notes": []
     },
     {
-      "ver": "VER340",
+      "verDefine": "VER340",
       "compilerVersion": "34.0",
-      "product_name": "Delphi 10.4 Sydney",
-      "package_version": "270",
-      "bds_reg_version": "21.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\21.0",
+      "productName": "Delphi 10.4 Sydney",
+      "packageVersion": "270",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\21.0",
       "aliases": [
-        "VER340",
         "Delphi 10.4",
         "Sydney",
         "10.4 Sydney"
@@ -375,14 +327,12 @@
       "notes": []
     },
     {
-      "ver": "VER350",
+      "verDefine": "VER350",
       "compilerVersion": "35.0",
-      "product_name": "Delphi 11 Alexandria",
-      "package_version": "280",
-      "bds_reg_version": "22.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\22.0",
+      "productName": "Delphi 11 Alexandria",
+      "packageVersion": "280",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\22.0",
       "aliases": [
-        "VER350",
         "Delphi 11",
         "Alexandria",
         "11 Alexandria"
@@ -390,14 +340,12 @@
       "notes": []
     },
     {
-      "ver": "VER360",
+      "verDefine": "VER360",
       "compilerVersion": "36.0",
-      "product_name": "Delphi 12 Athens",
-      "package_version": "290",
-      "bds_reg_version": "23.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\23.0",
+      "productName": "Delphi 12 Athens",
+      "packageVersion": "290",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\23.0",
       "aliases": [
-        "VER360",
         "Delphi 12",
         "Athens",
         "12 Athens"
@@ -405,14 +353,12 @@
       "notes": []
     },
     {
-      "ver": "VER370",
+      "verDefine": "VER370",
       "compilerVersion": "37.0",
-      "product_name": "Delphi 13 Florence",
-      "package_version": "370",
-      "bds_reg_version": "37.0",
-      "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\37.0",
+      "productName": "Delphi 13 Florence",
+      "packageVersion": "370",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\37.0",
       "aliases": [
-        "VER370",
         "Delphi 13",
         "Florence",
         "13 Florence"

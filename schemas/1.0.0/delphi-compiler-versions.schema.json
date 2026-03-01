@@ -31,7 +31,7 @@
       "description": "Optional metadata about the dataset generation and scope.",
       "additionalProperties": true,
       "properties": {
-        "generated_utc_date": {
+        "generatedUtcDate": {
           "type": "string",
           "description": "UTC date (YYYY-MM-DD) when this file was generated or last updated.",
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
@@ -43,18 +43,6 @@
           "type": "object",
           "description": "Scope rules for inclusion/exclusion.",
           "additionalProperties": true
-        },
-        "sources": {
-          "type": "array",
-          "description": "Source references used to construct the mapping.",
-          "items": {
-            "type": "string"
-          },
-          "examples": [
-            [
-              "https://docwiki.embarcadero.com/RADStudio/en/Compiler_Versions"
-            ]
-          ]
         }
       }
     },
@@ -72,13 +60,13 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "ver",
-        "product_name",
+        "verDefine",
+        "productName",
         "aliases",
         "compilerVersion"
       ],
       "properties": {
-        "ver": {
+        "verDefine": {
           "type": "string",
           "description": "Canonical Delphi compiler conditional define symbol.",
           "pattern": "^VER\\d+$",
@@ -94,7 +82,7 @@
             "37.0"
           ]
         },
-        "product_name": {
+        "productName": {
           "type": "string",
           "description": "Official product name for this Delphi release.",
           "minLength": 1,
@@ -102,7 +90,7 @@
             "Delphi 13 Florence"
           ]
         },
-        "package_version": {
+        "packageVersion": {
           "type": [
             "string",
             "null"
@@ -112,18 +100,7 @@
             "370"
           ]
         },
-        "bds_reg_version": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "BDS registry version string.",
-          "pattern": "^\\d+(\\.\\d+)?$",
-          "examples": [
-            "37.0"
-          ]
-        },
-        "registry_key_relpath": {
+        "regKeyRelativePath": {
           "type": [
             "string",
             "null"
@@ -135,16 +112,15 @@
         },
         "aliases": {
           "type": "array",
-          "description": "All identifiers that resolve to this entry. The canonical ver value must be included and should be listed first by convention.",
+          "description": "Identifiers that resolve to this entry. The properties verDefine and productName are automatically used as aliases.",
           "minItems": 1,
           "items": {
             "type": "string"
           },
           "examples": [
             [
-              "VER370",
               "Delphi 13",
-              "Delphi 13 Florence",
+              "Delphi13",
               "BDS 37.0",
               "CompilerVersion 37.0"
             ]
@@ -167,16 +143,13 @@
       "dataVersion": "0.1.0",
       "versions": [
         {
-          "ver": "VER370",
+          "verDefine": "VER370",
           "compilerVersion": "37.0",
-          "product_name": "Delphi 13 Florence",
-          "package_version": "370",
-          "bds_reg_version": "37.0",
-          "registry_key_relpath": "\\Software\\Embarcadero\\BDS\\37.0",
+          "productName": "Delphi 13 Florence",
+          "packageVersion": "370",
+          "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\37.0",
           "aliases": [
-            "VER370",
             "Delphi 13",
-            "Delphi 13 Florence",
             "BDS 37.0",
             "CompilerVersion 37.0"
           ],
