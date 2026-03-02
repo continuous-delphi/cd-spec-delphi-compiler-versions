@@ -15,22 +15,6 @@ Delphi tooling to resolve, normalize, and compare Delphi compiler
 versions. The canonical identifier is the `VER###` symbol (for example:
 `VER180`, `VER230`, `VER360`, `VER370`).
 
-In addition to the canonical JSON specification, this repository
-publishes a generated Delphi include file:
-
-    include/CD_DELPHI_VERSIONS.inc
-
-This include file is:
-
--   Canonical
--   Data-driven
--   MIT-licensed
--   Deterministically generated
--   Protected by automated tests
-
-The JSON dataset is the single source of truth. The include file is a
-derived artifact.
-
 ------------------------------------------------------------------------
 
 ## Scope
@@ -179,15 +163,21 @@ It emits:
 -   `CD_DELPHI_SUPPORTS_MSBUILD`
 -   `CD_DELPHI_SUPPORTS_PLATFORM_<Platform>` tokens
 
-
 Capability support is computed using version ranges. Historical edge
 cases (e.g. `VER180` / `VER185` compatibility) are handled explicitly.
 
-Output is:
 
--   Deterministic and reproducible
--   UTF-8 encoding without BOM
--   CRLF line endings
+This include file is:
+
+-   Canonical
+-   Data-driven
+-   MIT-licensed
+-   Deterministically generated
+-   Protected by automated tests
+
+The JSON dataset is the single source of truth. The include file is a
+derived artifact.
+
 
 ------------------------------------------------------------------------
 
