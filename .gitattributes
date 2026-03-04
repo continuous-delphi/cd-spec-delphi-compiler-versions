@@ -11,8 +11,9 @@
 # Catch-all: normalise all text files to LF in the repo
 * text eol=lf
 
-# Delphi include files should always be CRLF
+# Delphi source files should always be CRLF
 *.inc text eol=crlf
+*.pas text eol=crlf
 
 # PowerShell scripts must be CRLF.  PowerShell on Windows writes CRLF by
 # default; keeping scripts CRLF avoids spurious diffs when Windows devs

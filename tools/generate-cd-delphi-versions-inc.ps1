@@ -31,10 +31,19 @@ function Ensure-ParentDir([string]$FilePath) {
 }
 
 function Normalize-VersionToken([string]$v) {
+  # Used for schema/data version tokens only (e.g. "1.0.0" -> "1_0_0").
+  # Preserves original casing so version-derived tokens remain unchanged.
+  # Contrast with Normalize-Ident, which forces uppercase for compiler identifiers.
+  # Contrast with Normalize-Ident, which forces uppercase for compiler identifiers.
   return ($v -replace '[^0-9A-Za-z]+','_').Trim('_')
 }
 
 function Normalize-Ident([string]$s) {
+  # Used for all compiler/capability identifier tokens (e.g. "macOS32" -> "MACOS32",
+  # "10.2 Tokyo" -> "10_2_TOKYO"). Forces uppercase because Delphi $DEFINE names are
+  # case-insensitive but convention is ALL_CAPS; also collapses any non-alphanumeric
+  # run to a single underscore.
+  # Contrast with Normalize-VersionToken, which preserves casing for version strings.
   $t = $s.ToUpperInvariant()
   $t = $t -replace '[^A-Z0-9]+','_'
   $t = $t.Trim('_')
@@ -368,17 +377,6 @@ foreach ($platTok in $platformList) {
 # Write output
 Ensure-ParentDir $OutPath
 
-$newText = $sb.ToString()
-
-if ((-not $Force) -and (Test-Path -LiteralPath $OutPath)) {
-  $existing = Get-Content -LiteralPath $OutPath -Raw -Encoding UTF8
-  if ($existing -eq $newText) {
-    Write-Host "No changes: $OutPath"
-    exit 0
-  }
-}
-
-# $newText | Set-Content -LiteralPath $OutPath -Encoding UTF8
 # Normalize line endings to CRLF explicitly
 $newText = $sb.ToString()
 
@@ -398,11 +396,6 @@ if ((-not $Force) -and (Test-Path -LiteralPath $OutPath)) {
 # Use UTF8 without BOM (cleaner for include files)
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText($OutPath, $newText, $Utf8NoBom)
-
-
-Write-Host "Wrote: $OutPath"
-Write-Host ('SchemaVersion: ' + $data.schemaVersion + '  DataVersion: ' + $data.dataVersion)
-
 
 Write-Host "Wrote: $OutPath"
 Write-Host ('SchemaVersion: ' + $data.schemaVersion + '  DataVersion: ' + $data.dataVersion)

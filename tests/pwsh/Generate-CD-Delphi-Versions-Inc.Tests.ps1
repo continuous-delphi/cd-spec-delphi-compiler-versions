@@ -57,13 +57,18 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
   }
 
   It 'emits MSBuild as open-ended optimistic support' {
-    # Assert the block exists
-    $script:OutText | Should -Match '\{\$IFDEF CD_DELPHI_10_2_OR_LATER\}\s*\r?\n\s*\{\$DEFINE CD_DELPHI_SUPPORTS_MSBUILD\}'
+    # The fixture's first MSBuild entry (VER320) determines the lower-bound token; VER350 also
+    # has MSBuild so the range is open-ended. We do not hardcode the token name here so that
+    # the test remains valid if the fixture's first MSBuild version changes.
+
+    # The SUPPORTS_MSBUILD define must appear immediately inside an _OR_LATER guard with no
+    # intervening $IFNDEF (open-ended, not bounded from above).
+    $script:OutText | Should -Match '\{\$IFDEF CD_DELPHI_\w+_OR_LATER\}\s*\r?\n\s*\{\$DEFINE CD_DELPHI_SUPPORTS_MSBUILD\}'
 
     # Extract the specific MSBuild capability block and ensure it has no VERSION_UNKNOWN guard
     $m = [regex]::Match(
         $script:OutText,
-        '\{\$IFDEF CD_DELPHI_10_2_OR_LATER\}[\s\S]*?\{\$DEFINE CD_DELPHI_SUPPORTS_MSBUILD\}[\s\S]*?\{\$ENDIF\}',
+        '\{\$IFDEF CD_DELPHI_\w+_OR_LATER\}[\s\S]*?\{\$DEFINE CD_DELPHI_SUPPORTS_MSBUILD\}[\s\S]*?\{\$ENDIF\}',
         [System.Text.RegularExpressions.RegexOptions]::Singleline
     )
 
@@ -72,7 +77,11 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
   }
 
   It 'emits macOS32 platform support as a bounded range' {
-    $script:OutText | Should -Match '\{\$IFDEF CD_DELPHI_10_2_OR_LATER\}[\s\S]*\{\$IFNDEF CD_DELPHI_11_OR_LATER\}[\s\S]*\{\$DEFINE CD_DELPHI_SUPPORTS_PLATFORM_MACOS32\}'
+    # VER320 (10.2 Tokyo) has macOS32; VER350 (11 Alexandria) intentionally omits it.
+    # That absence is what causes Find-Range to set firstOff=VER350, producing an upper-bound
+    # $IFNDEF guard. We match on the structural pattern rather than specific token names so
+    # the test stays valid if the fixture versions are ever renumbered.
+    $script:OutText | Should -Match '\{\$IFDEF CD_DELPHI_\w+_OR_LATER\}[\s\S]*\{\$IFNDEF CD_DELPHI_\w+_OR_LATER\}[\s\S]*\{\$DEFINE CD_DELPHI_SUPPORTS_PLATFORM_MACOS32\}'
   }
 
   It 'writes CRLF line endings for the .inc file' {
@@ -99,11 +108,11 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
     }
   }
 
-AfterAll {
-  if ($script:TmpRoot -and (Test-Path -LiteralPath $script:TmpRoot)) {
-    Remove-Item -LiteralPath $script:TmpRoot -Recurse -Force -ErrorAction SilentlyContinue
+  AfterAll {
+    if ($script:TmpRoot -and (Test-Path -LiteralPath $script:TmpRoot)) {
+      Remove-Item -LiteralPath $script:TmpRoot -Recurse -Force -ErrorAction SilentlyContinue
+    }
   }
-}
 }
 
 
