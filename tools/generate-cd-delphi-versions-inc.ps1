@@ -34,7 +34,6 @@ function Normalize-VersionToken([string]$v) {
   # Used for schema/data version tokens only (e.g. "1.0.0" -> "1_0_0").
   # Preserves original casing so version-derived tokens remain unchanged.
   # Contrast with Normalize-Ident, which forces uppercase for compiler identifiers.
-  # Contrast with Normalize-Ident, which forces uppercase for compiler identifiers.
   return ($v -replace '[^0-9A-Za-z]+','_').Trim('_')
 }
 
