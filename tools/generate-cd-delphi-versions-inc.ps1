@@ -1,5 +1,5 @@
 # tools/generate-cd-delphi-versions-inc.ps1
-# Generates: include/CD_DELPHI_VERSIONS.inc
+# Generates: generated/CD_DELPHI_VERSIONS.inc
 # Requires: PowerShell 7+
 
 [CmdletBinding()]
@@ -8,7 +8,7 @@ param(
   [string] $DataPath = (Join-Path $PSScriptRoot '..\data\delphi-compiler-versions.json'),
 
   [Parameter()]
-  [string] $OutPath  = (Join-Path $PSScriptRoot '..\include\CD_DELPHI_VERSIONS.inc'),
+  [string] $OutPath  = (Join-Path $PSScriptRoot '..\generated\CD_DELPHI_VERSIONS.inc'),
 
   [Parameter()]
   [switch] $Force

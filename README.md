@@ -44,7 +44,7 @@ tooling derive from that dataset.
     tools/
       generate-cd-delphi-versions-inc.ps1
 
-    include/
+    generated/
       CD_DELPHI_VERSIONS.inc
 
     tests/

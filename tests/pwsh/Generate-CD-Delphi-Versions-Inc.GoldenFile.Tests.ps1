@@ -11,7 +11,7 @@ Describe 'CD_DELPHI_VERSIONS.inc golden file consistency' {
 
     $genPath  = Join-Path $repoRoot 'tools\generate-cd-delphi-versions-inc.ps1'
     $dataPath = Join-Path $repoRoot 'data\delphi-compiler-versions.json'
-    $incPath  = Join-Path $repoRoot 'include\CD_DELPHI_VERSIONS.inc'
+    $incPath  = Join-Path $repoRoot 'generated\CD_DELPHI_VERSIONS.inc'
 
     if (-not (Test-Path -LiteralPath $genPath))  { throw "Generator not found: $genPath" }
     if (-not (Test-Path -LiteralPath $dataPath)) { throw "Canonical JSON not found: $dataPath" }
@@ -45,7 +45,7 @@ Describe 'CD_DELPHI_VERSIONS.inc golden file consistency' {
         }
 
         $same | Should -BeTrue -Because @"
-include/CD_DELPHI_VERSIONS.inc is out of date.
+generated/CD_DELPHI_VERSIONS.inc is out of date.
 
 Run:
   pwsh tools/generate-cd-delphi-versions-inc.ps1
