@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://continuous-delphi.github.io/cd-spec-delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json",
-  "title": "Continuous Delphi - Delphi Compiler Versions",
+  "$id": "https://continuous-delphi.github.io/delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json",
+  "title": "Continuous Delphi - Canonical List of Compiler Versions",
   "type": "object",
   "additionalProperties": false,
   "required": [
