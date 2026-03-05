@@ -46,10 +46,10 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     $match.Success | Should -BeTrue
   }
 
-  It 'VER180 block assigns CDCurrentCompilerVersion' {
+  It 'VER180 block assigns CurrentDelphiCompilerVersion' {
 
     # Verify the VER180 block (inside IFNDEF VER185) contains a
-    # CDCurrentCompilerVersion assignment. The array index is determined by
+    # CurrentDelphiCompilerVersion assignment. The array index is determined by
     # the generator's sort order of the full canonical dataset.
     $match = [regex]::Match(
       $script:OutText,
@@ -58,7 +58,7 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     )
 
     $match.Success | Should -BeTrue
-    $match.Value | Should -Match 'CDCurrentCompilerVersion := CDDelphiVersions\[\d+\]'
+    $match.Value | Should -Match 'CurrentDelphiCompilerVersion := DelphiVersions\[\d+\]'
   }
 
   It 'VER185 block appears after VER180 block in initialization' {
@@ -83,7 +83,7 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     $script:OutText | Should -Not -Match '\{\$IFNDEF VER185\}\s*\r?\n\s*\{\$IFDEF VER185\}'
   }
 
-  It 'VER180 block sets CDCurrentCompilerVersionKnown := True' {
+  It 'VER180 block sets IsCurrentDelphiCompilerVersionKnown := True' {
 
     $ver180Block = [regex]::Match(
       $script:OutText,
@@ -92,10 +92,10 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     )
 
     $ver180Block.Success | Should -BeTrue
-    $ver180Block.Value | Should -Match 'CDCurrentCompilerVersionKnown := True'
+    $ver180Block.Value | Should -Match 'IsCurrentDelphiCompilerVersionKnown := True'
   }
 
-  It 'VER185 block sets CDCurrentCompilerVersionKnown := True' {
+  It 'VER185 block sets IsCurrentDelphiCompilerVersionKnown := True' {
 
     $ver185Block = [regex]::Match(
       $script:OutText,
@@ -104,7 +104,7 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     )
 
     $ver185Block.Success | Should -BeTrue
-    $ver185Block.Value | Should -Match 'CDCurrentCompilerVersionKnown := True'
+    $ver185Block.Value | Should -Match 'IsCurrentDelphiCompilerVersionKnown := True'
   }
 
   AfterAll {

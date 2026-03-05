@@ -3,46 +3,46 @@ unit DelphiCompilerVersions;
 interface
 
 type
-  TCDDelphiPlatform = (
-    dpAndroid32,
-    dpAndroid64,
-    dpIOS,
-    dpIOSSimulator,
-    dpLinux64,
-    dpMacOS32,
-    dpMacOS64,
-    dpMacOSARM64,
-    dpWin32,
-    dpWin64
+  TDelphiPlatform = (
+    Android32Target,
+    Android64Target,
+    IOSTarget,
+    IOSSimulatorTarget,
+    Linux64Target,
+    MacOS32Target,
+    MacOS64Target,
+    MacOSARM64Target,
+    Win32Target,
+    Win64Target
   );
 
-  TCDDelphiPlatforms = set of TCDDelphiPlatform;
+  TDelphiPlatforms = set of TDelphiPlatform;
 
-  TCDDelphiBuildSystem = (
-    dbDCC,
-    dbMSBuild
+  TDelphiBuildSystem = (
+    DCCSystem,
+    MSBuildSystem
   );
 
-  TCDDelphiBuildSystems = set of TCDDelphiBuildSystem;
+  TDelphiBuildSystems = set of TDelphiBuildSystem;
 
-  TCDDelphiVersion = record
+  TDelphiVersion = record
     VerDefine: string;
     CompilerVersion: string;
     ProductName: string;
     PackageVersion: string;
     RegKeyRelativePath: string;
-    SupportedPlatforms: TCDDelphiPlatforms;
-    SupportedBuildSystems: TCDDelphiBuildSystems;
+    SupportedPlatforms: TDelphiPlatforms;
+    SupportedBuildSystems: TDelphiBuildSystems;
     AliasesCsv: string;
   end;
 
-  PCDDelphiVersion = ^TCDDelphiVersion;
+  PDelphiVersion = ^TDelphiVersion;
 
 const
   CD_SCHEMA_VERSION = '1.0.0';
   CD_DATA_VERSION   = '0.5.0';
 
-  CDDelphiVersions: array[0..26] of TCDDelphiVersion =
+  DelphiVersions: array[0..26] of TDelphiVersion =
   (
     (
       VerDefine: 'VER90';
@@ -50,8 +50,8 @@ const
       ProductName: 'Delphi 2';
       PackageVersion: '20';
       RegKeyRelativePath: '\Software\Borland\Delphi\2.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi2;D2';
     ),
     (
@@ -60,8 +60,8 @@ const
       ProductName: 'Delphi 3';
       PackageVersion: '30';
       RegKeyRelativePath: '\Software\Borland\Delphi\3.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi3;D3';
     ),
     (
@@ -70,8 +70,8 @@ const
       ProductName: 'Delphi 4';
       PackageVersion: '40';
       RegKeyRelativePath: '\Software\Borland\Delphi\4.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi4;D4';
     ),
     (
@@ -80,8 +80,8 @@ const
       ProductName: 'Delphi 5';
       PackageVersion: '50';
       RegKeyRelativePath: '\Software\Borland\Delphi\5.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi5;D5';
     ),
     (
@@ -90,8 +90,8 @@ const
       ProductName: 'Delphi 6';
       PackageVersion: '60';
       RegKeyRelativePath: '\Software\Borland\Delphi\6.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi6;D6';
     ),
     (
@@ -100,8 +100,8 @@ const
       ProductName: 'Delphi 7';
       PackageVersion: '70';
       RegKeyRelativePath: '\Software\Borland\Delphi\7.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi7;D7';
     ),
     (
@@ -110,8 +110,8 @@ const
       ProductName: 'Delphi 2005';
       PackageVersion: '90';
       RegKeyRelativePath: '\Software\Borland\BDS\3.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi2005;D2005';
     ),
     (
@@ -120,8 +120,8 @@ const
       ProductName: 'Delphi 2006';
       PackageVersion: '100';
       RegKeyRelativePath: '\Software\Borland\BDS\4.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem];
       AliasesCsv: 'Delphi2006;D2006';
     ),
     (
@@ -130,8 +130,8 @@ const
       ProductName: 'Delphi 2007';
       PackageVersion: '110';
       RegKeyRelativePath: '\Software\Borland\BDS\5.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi2007;D2007';
     ),
     (
@@ -140,8 +140,8 @@ const
       ProductName: 'Delphi 2009';
       PackageVersion: '120';
       RegKeyRelativePath: '\Software\CodeGear\BDS\6.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi2009;D2009';
     ),
     (
@@ -150,8 +150,8 @@ const
       ProductName: 'Delphi 2010';
       PackageVersion: '140';
       RegKeyRelativePath: '\Software\CodeGear\BDS\7.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi2010;D2010';
     ),
     (
@@ -160,8 +160,8 @@ const
       ProductName: 'Delphi XE';
       PackageVersion: '150';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\8.0';
-      SupportedPlatforms: [dpWin32];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Win32Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE;XE';
     ),
     (
@@ -170,8 +170,8 @@ const
       ProductName: 'Delphi XE2';
       PackageVersion: '160';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\9.0';
-      SupportedPlatforms: [dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE2;XE2';
     ),
     (
@@ -180,8 +180,8 @@ const
       ProductName: 'Delphi XE3';
       PackageVersion: '170';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\10.0';
-      SupportedPlatforms: [dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE3;XE3';
     ),
     (
@@ -190,8 +190,8 @@ const
       ProductName: 'Delphi XE4';
       PackageVersion: '180';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\11.0';
-      SupportedPlatforms: [dpIOS, dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [IOSTarget, MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE4;XE4';
     ),
     (
@@ -200,8 +200,8 @@ const
       ProductName: 'Delphi XE5';
       PackageVersion: '190';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\12.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE5;XE5';
     ),
     (
@@ -210,8 +210,8 @@ const
       ProductName: 'Delphi XE6';
       PackageVersion: '200';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\14.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE6;XE6';
     ),
     (
@@ -220,8 +220,8 @@ const
       ProductName: 'Delphi XE7';
       PackageVersion: '210';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\15.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE7;XE7';
     ),
     (
@@ -230,8 +230,8 @@ const
       ProductName: 'Delphi XE8';
       PackageVersion: '220';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\16.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'DelphiXE8;XE8';
     ),
     (
@@ -240,8 +240,8 @@ const
       ProductName: 'Delphi 10 Seattle';
       PackageVersion: '230';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\17.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 10;Seattle;10 Seattle';
     ),
     (
@@ -250,8 +250,8 @@ const
       ProductName: 'Delphi 10.1 Berlin';
       PackageVersion: '240';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\18.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpMacOS32, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, MacOS32Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 10.1;Berlin;10.1 Berlin';
     ),
     (
@@ -260,8 +260,8 @@ const
       ProductName: 'Delphi 10.2 Tokyo';
       PackageVersion: '250';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\19.0';
-      SupportedPlatforms: [dpAndroid32, dpIOS, dpLinux64, dpMacOS32, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, IOSTarget, Linux64Target, MacOS32Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 10.2;Tokyo;10.2 Tokyo';
     ),
     (
@@ -270,8 +270,8 @@ const
       ProductName: 'Delphi 10.3 Rio';
       PackageVersion: '260';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\20.0';
-      SupportedPlatforms: [dpAndroid32, dpAndroid64, dpIOS, dpIOSSimulator, dpLinux64, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, Android64Target, IOSSimulatorTarget, IOSTarget, Linux64Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 10.3;Rio;10.3 Rio';
     ),
     (
@@ -280,8 +280,8 @@ const
       ProductName: 'Delphi 10.4 Sydney';
       PackageVersion: '270';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\21.0';
-      SupportedPlatforms: [dpAndroid32, dpAndroid64, dpIOS, dpIOSSimulator, dpLinux64, dpMacOS64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, Android64Target, IOSSimulatorTarget, IOSTarget, Linux64Target, MacOS64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 10.4;Sydney;10.4 Sydney';
     ),
     (
@@ -290,8 +290,8 @@ const
       ProductName: 'Delphi 11 Alexandria';
       PackageVersion: '280';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\22.0';
-      SupportedPlatforms: [dpAndroid32, dpAndroid64, dpIOS, dpIOSSimulator, dpLinux64, dpMacOS64, dpMacOSARM64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, Android64Target, IOSSimulatorTarget, IOSTarget, Linux64Target, MacOS64Target, MacOSARM64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 11;Alexandria;11 Alexandria';
     ),
     (
@@ -300,8 +300,8 @@ const
       ProductName: 'Delphi 12 Athens';
       PackageVersion: '290';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\23.0';
-      SupportedPlatforms: [dpAndroid32, dpAndroid64, dpIOS, dpIOSSimulator, dpLinux64, dpMacOS64, dpMacOSARM64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, Android64Target, IOSSimulatorTarget, IOSTarget, Linux64Target, MacOS64Target, MacOSARM64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 12;Athens;12 Athens';
     ),
     (
@@ -310,20 +310,20 @@ const
       ProductName: 'Delphi 13 Florence';
       PackageVersion: '370';
       RegKeyRelativePath: '\Software\Embarcadero\BDS\37.0';
-      SupportedPlatforms: [dpAndroid32, dpAndroid64, dpIOS, dpIOSSimulator, dpLinux64, dpMacOS64, dpMacOSARM64, dpWin32, dpWin64];
-      SupportedBuildSystems: [dbDCC, dbMSBuild];
+      SupportedPlatforms: [Android32Target, Android64Target, IOSSimulatorTarget, IOSTarget, Linux64Target, MacOS64Target, MacOSARM64Target, Win32Target, Win64Target];
+      SupportedBuildSystems: [DCCSystem, MSBuildSystem];
       AliasesCsv: 'Delphi 13;Florence;13 Florence';
     )
   );
 
-function CDTryGetVersionByVerDefine(const AVerDefine: string; var AVersion: TCDDelphiVersion): Boolean;
-function CDTryGetVersionByProductName(const AProductName: string; var AVersion: TCDDelphiVersion): Boolean;
-function CDTryGetVersionByAlias(const AAlias: string; var AVersion: TCDDelphiVersion): Boolean;
-function CDGetLatestVersion: TCDDelphiVersion;
+function TryGetDelphiVersionByVerDefine(const AVerDefine: string; var AVersion: TDelphiVersion): Boolean;
+function TryGetDelphiVersionByProductName(const AProductName: string; var AVersion: TDelphiVersion): Boolean;
+function TryGetDelphiVersionByAlias(const AAlias: string; var AVersion: TDelphiVersion): Boolean;
+function GetLatestDelphiVersion: TDelphiVersion;
 
 var
-  CDCurrentCompilerVersion: TCDDelphiVersion;
-  CDCurrentCompilerVersionKnown: Boolean;
+  CurrentDelphiCompilerVersion: TDelphiVersion;
+  IsCurrentDelphiCompilerVersionKnown: Boolean;
 
 implementation
 
@@ -340,32 +340,32 @@ begin
   Result := CompareText(A, B) = 0;
 end;
 
-function CDTryGetVersionByVerDefine(const AVerDefine: string; var AVersion: TCDDelphiVersion): Boolean;
+function TryGetDelphiVersionByVerDefine(const AVerDefine: string; var AVersion: TDelphiVersion): Boolean;
 var
   I: Integer;
 begin
   Result := False;
-  for I := Low(CDDelphiVersions) to High(CDDelphiVersions) do
+  for I := Low(DelphiVersions) to High(DelphiVersions) do
   begin
-    if TextEqualsIgnoreCase(CDDelphiVersions[I].VerDefine, AVerDefine) then
+    if TextEqualsIgnoreCase(DelphiVersions[I].VerDefine, AVerDefine) then
     begin
-      AVersion := CDDelphiVersions[I];
+      AVersion := DelphiVersions[I];
       Result := True;
       Exit;
     end;
   end;
 end;
 
-function CDTryGetVersionByProductName(const AProductName: string; var AVersion: TCDDelphiVersion): Boolean;
+function TryGetDelphiVersionByProductName(const AProductName: string; var AVersion: TDelphiVersion): Boolean;
 var
   I: Integer;
 begin
   Result := False;
-  for I := Low(CDDelphiVersions) to High(CDDelphiVersions) do
+  for I := Low(DelphiVersions) to High(DelphiVersions) do
   begin
-    if TextEqualsIgnoreCase(CDDelphiVersions[I].ProductName, AProductName) then
+    if TextEqualsIgnoreCase(DelphiVersions[I].ProductName, AProductName) then
     begin
-      AVersion := CDDelphiVersions[I];
+      AVersion := DelphiVersions[I];
       Result := True;
       Exit;
     end;
@@ -396,162 +396,162 @@ begin
   end;
 end;
 
-function CDTryGetVersionByAlias(const AAlias: string; var AVersion: TCDDelphiVersion): Boolean;
+function TryGetDelphiVersionByAlias(const AAlias: string; var AVersion: TDelphiVersion): Boolean;
 var
   I: Integer;
 begin
   Result := False;
-  for I := Low(CDDelphiVersions) to High(CDDelphiVersions) do
+  for I := Low(DelphiVersions) to High(DelphiVersions) do
   begin
-    if CsvContainsToken(CDDelphiVersions[I].AliasesCsv, AAlias) then
+    if CsvContainsToken(DelphiVersions[I].AliasesCsv, AAlias) then
     begin
-      AVersion := CDDelphiVersions[I];
+      AVersion := DelphiVersions[I];
       Result := True;
       Exit;
     end;
   end;
 end;
 
-function CDGetLatestVersion: TCDDelphiVersion;
+function GetLatestDelphiVersion: TDelphiVersion;
 begin
-  Result := CDDelphiVersions[High(CDDelphiVersions)];
+  Result := DelphiVersions[High(DelphiVersions)];
 end;
 
 initialization
 
   {$IFDEF VER90}
-    CDCurrentCompilerVersion := CDDelphiVersions[0];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[0];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER100}
-    CDCurrentCompilerVersion := CDDelphiVersions[1];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[1];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER120}
-    CDCurrentCompilerVersion := CDDelphiVersions[2];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[2];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER130}
-    CDCurrentCompilerVersion := CDDelphiVersions[3];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[3];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER140}
-    CDCurrentCompilerVersion := CDDelphiVersions[4];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[4];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER150}
-    CDCurrentCompilerVersion := CDDelphiVersions[5];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[5];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER170}
-    CDCurrentCompilerVersion := CDDelphiVersions[6];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[6];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER180}{$IFNDEF VER185}
-    CDCurrentCompilerVersion := CDDelphiVersions[7];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[7];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}{$ENDIF}
 
   {$IFDEF VER185}
-    CDCurrentCompilerVersion := CDDelphiVersions[8];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[8];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER200}
-    CDCurrentCompilerVersion := CDDelphiVersions[9];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[9];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER210}
-    CDCurrentCompilerVersion := CDDelphiVersions[10];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[10];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER220}
-    CDCurrentCompilerVersion := CDDelphiVersions[11];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[11];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER230}
-    CDCurrentCompilerVersion := CDDelphiVersions[12];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[12];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER240}
-    CDCurrentCompilerVersion := CDDelphiVersions[13];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[13];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER250}
-    CDCurrentCompilerVersion := CDDelphiVersions[14];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[14];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER260}
-    CDCurrentCompilerVersion := CDDelphiVersions[15];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[15];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER270}
-    CDCurrentCompilerVersion := CDDelphiVersions[16];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[16];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER280}
-    CDCurrentCompilerVersion := CDDelphiVersions[17];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[17];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER290}
-    CDCurrentCompilerVersion := CDDelphiVersions[18];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[18];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER300}
-    CDCurrentCompilerVersion := CDDelphiVersions[19];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[19];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER310}
-    CDCurrentCompilerVersion := CDDelphiVersions[20];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[20];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER320}
-    CDCurrentCompilerVersion := CDDelphiVersions[21];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[21];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER330}
-    CDCurrentCompilerVersion := CDDelphiVersions[22];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[22];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER340}
-    CDCurrentCompilerVersion := CDDelphiVersions[23];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[23];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER350}
-    CDCurrentCompilerVersion := CDDelphiVersions[24];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[24];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER360}
-    CDCurrentCompilerVersion := CDDelphiVersions[25];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[25];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
   {$IFDEF VER370}
-    CDCurrentCompilerVersion := CDDelphiVersions[26];
-    CDCurrentCompilerVersionKnown := True;
+    CurrentDelphiCompilerVersion := DelphiVersions[26];
+    IsCurrentDelphiCompilerVersionKnown := True;
   {$ENDIF}
 
 end.

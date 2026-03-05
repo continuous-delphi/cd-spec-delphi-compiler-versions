@@ -99,20 +99,20 @@ Describe 'DelphiCompilerVersions.pas generator' {
   # Type declarations
   # -------------------------------------------------------------------------
 
-  It 'declares TCDDelphiPlatform enum' {
-    $script:OutText | Should -Match 'TCDDelphiPlatform = \('
+  It 'declares TDelphiPlatform enum' {
+    $script:OutText | Should -Match 'TDelphiPlatform = \('
   }
 
-  It 'declares TCDDelphiBuildSystem enum' {
-    $script:OutText | Should -Match 'TCDDelphiBuildSystem = \('
+  It 'declares TDelphiBuildSystem enum' {
+    $script:OutText | Should -Match 'TDelphiBuildSystem = \('
   }
 
-  It 'declares TCDDelphiVersion record' {
-    $script:OutText | Should -Match 'TCDDelphiVersion = record'
+  It 'declares TDelphiVersion record' {
+    $script:OutText | Should -Match 'TDelphiVersion = record'
   }
 
-  It 'declares PCDDelphiVersion pointer type' {
-    $script:OutText | Should -Match 'PCDDelphiVersion = \^TCDDelphiVersion'
+  It 'declares PDelphiVersion pointer type' {
+    $script:OutText | Should -Match 'PDelphiVersion = \^TDelphiVersion'
   }
 
   It 'record contains AliasesCsv field' {
@@ -147,44 +147,44 @@ Describe 'DelphiCompilerVersions.pas generator' {
   }
 
   It 'VER320 SupportedPlatforms set is non-empty' {
-    $script:OutText | Should -Match 'SupportedPlatforms: \[dp\w+'
+    $script:OutText | Should -Match 'SupportedPlatforms: \[\w+Target'
   }
 
-  It 'VER320 SupportedBuildSystems includes MSBuild' {
-    $script:OutText | Should -Match 'SupportedBuildSystems: \[dbMSBuild\]'
+  It 'VER320 SupportedBuildSystems includes MSBuildSystem' {
+    $script:OutText | Should -Match 'SupportedBuildSystems: \[MSBuildSystem\]'
   }
 
   # -------------------------------------------------------------------------
   # Interface declarations
   # -------------------------------------------------------------------------
 
-  It 'declares CDTryGetVersionByVerDefine with var parameter' {
-    $script:OutText | Should -Match 'function CDTryGetVersionByVerDefine\(.*var AVersion'
+  It 'declares TryGetDelphiVersionByVerDefine with var parameter' {
+    $script:OutText | Should -Match 'function TryGetDelphiVersionByVerDefine\(.*var AVersion'
   }
 
-  It 'declares CDTryGetVersionByProductName with var parameter' {
-    $script:OutText | Should -Match 'function CDTryGetVersionByProductName\(.*var AVersion'
+  It 'declares TryGetDelphiVersionByProductName with var parameter' {
+    $script:OutText | Should -Match 'function TryGetDelphiVersionByProductName\(.*var AVersion'
   }
 
-  It 'declares CDTryGetVersionByAlias with var parameter' {
-    $script:OutText | Should -Match 'function CDTryGetVersionByAlias\(.*var AVersion'
+  It 'declares TryGetDelphiVersionByAlias with var parameter' {
+    $script:OutText | Should -Match 'function TryGetDelphiVersionByAlias\(.*var AVersion'
   }
 
-  It 'declares CDGetLatestVersion' {
-    $script:OutText | Should -Match 'function CDGetLatestVersion: TCDDelphiVersion'
+  It 'declares GetLatestDelphiVersion' {
+    $script:OutText | Should -Match 'function GetLatestDelphiVersion: TDelphiVersion'
   }
 
-  It 'declares CDCurrentCompilerVersion as var' {
+  It 'declares CurrentDelphiCompilerVersion as var' {
     $m = [regex]::Match(
       $script:OutText,
-      'var\b[\s\S]*?CDCurrentCompilerVersion: TCDDelphiVersion',
+      'var\b[\s\S]*?CurrentDelphiCompilerVersion: TDelphiVersion',
       [System.Text.RegularExpressions.RegexOptions]::Singleline
     )
     $m.Success | Should -BeTrue
   }
 
-  It 'declares CDCurrentCompilerVersionKnown as var' {
-    $script:OutText | Should -Match 'CDCurrentCompilerVersionKnown: Boolean'
+  It 'declares IsCurrentDelphiCompilerVersionKnown as var' {
+    $script:OutText | Should -Match 'IsCurrentDelphiCompilerVersionKnown: Boolean'
   }
 
   # -------------------------------------------------------------------------
@@ -226,37 +226,37 @@ Describe 'DelphiCompilerVersions.pas generator' {
     $script:OutText | Should -Not -Match 'Exit\(False\)'
   }
 
-  It 'CsvContainsToken is defined before CDTryGetVersionByAlias' {
+  It 'CsvContainsToken is defined before TryGetDelphiVersionByAlias' {
     # CsvContainsToken is a private helper (no interface declaration); both
     # function bodies live in the implementation section. Search from there
-    # so the CDTryGetVersionByAlias interface declaration is not counted.
+    # so the TryGetDelphiVersionByAlias interface declaration is not counted.
     $implIdx  = $script:OutText.IndexOf('implementation')
     $idxCsv   = $script:OutText.IndexOf('function CsvContainsToken', $implIdx)
-    $idxAlias = $script:OutText.IndexOf('function CDTryGetVersionByAlias', $implIdx)
+    $idxAlias = $script:OutText.IndexOf('function TryGetDelphiVersionByAlias', $implIdx)
     $idxCsv   | Should -BeGreaterThan -1
     $idxAlias | Should -BeGreaterThan -1
     $idxCsv   | Should -BeLessThan $idxAlias
   }
 
-  It 'CDGetLatestVersion body uses High(CDDelphiVersions)' {
-    $script:OutText | Should -Match 'Result := CDDelphiVersions\[High\(CDDelphiVersions\)\]'
+  It 'GetLatestDelphiVersion body uses High(DelphiVersions)' {
+    $script:OutText | Should -Match 'Result := DelphiVersions\[High\(DelphiVersions\)\]'
   }
 
   # -------------------------------------------------------------------------
   # Initialization section
   # -------------------------------------------------------------------------
 
-  It 'initialization assigns VER90 to CDDelphiVersions[0]' {
+  It 'initialization assigns VER90 to DelphiVersions[0]' {
     $m = [regex]::Match(
       $script:OutText,
-      '\{\$IFDEF VER90\}[\s\S]*?CDCurrentCompilerVersion := CDDelphiVersions\[0\][\s\S]*?\{\$ENDIF\}',
+      '\{\$IFDEF VER90\}[\s\S]*?CurrentDelphiCompilerVersion := DelphiVersions\[0\][\s\S]*?\{\$ENDIF\}',
       [System.Text.RegularExpressions.RegexOptions]::Singleline
     )
     $m.Success | Should -BeTrue
   }
 
-  It 'initialization sets CDCurrentCompilerVersionKnown := True' {
-    $script:OutText | Should -Match 'CDCurrentCompilerVersionKnown := True'
+  It 'initialization sets IsCurrentDelphiCompilerVersionKnown := True' {
+    $script:OutText | Should -Match 'IsCurrentDelphiCompilerVersionKnown := True'
   }
 
   # -------------------------------------------------------------------------

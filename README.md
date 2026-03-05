@@ -195,18 +195,22 @@ all later versions.
 
 It provides:
 
--   `TCDDelphiPlatform` and `TCDDelphiBuildSystem` enumerations
--   `TCDDelphiVersion` record with fields for all dataset properties,
+-   `TDelphiPlatform` enumeration with suffix-named members
+    (e.g. `Win32Target`, `Win64Target`, `MacOS32Target`)
+-   `TDelphiBuildSystem` enumeration with suffix-named members
+    (e.g. `DCCSystem`, `MSBuildSystem`)
+-   `TDelphiVersion` record with fields for all dataset properties,
     including an `AliasesCsv` field for alias resolution
--   `PCDDelphiVersion` pointer type
--   `CDDelphiVersions` typed constant array, sorted chronologically
+-   `PDelphiVersion` pointer type
+-   `DelphiVersions` typed constant array, sorted chronologically
 -   `CD_SCHEMA_VERSION` and `CD_DATA_VERSION` string constants
--   `CDGetLatestVersion` — returns the most recent entry in the array
--   `CDCurrentCompilerVersion` and `CDCurrentCompilerVersionKnown` —
+-   `GetLatestDelphiVersion` -- returns the most recent entry in the array
+-   `CurrentDelphiCompilerVersion` and `IsCurrentDelphiCompilerVersionKnown` --
     vars populated at unit initialization via `{$IFDEF VERxxx}` chains;
-    `Known` is `False` if the compiler is not recognized in the dataset
--   `CDTryGetVersionByVerDefine`, `CDTryGetVersionByProductName`,
-    `CDTryGetVersionByAlias` — lookup functions
+    `IsCurrentDelphiCompilerVersionKnown` is `False` if the compiler is not
+    recognized in the dataset
+-   `TryGetDelphiVersionByVerDefine`, `TryGetDelphiVersionByProductName`,
+    `TryGetDelphiVersionByAlias` -- lookup functions
 
 The unit uses a conditional `uses` clause to select `System.SysUtils`
 (Delphi 2009 and later) or `SysUtils` (earlier versions) based on the
@@ -255,6 +259,7 @@ The test suite ensures:
 -   Capability ranges are computed correctly
 -   CRLF line endings on all generated files
 -   UTF-8 encoding without BOM
+-   ASCII-only content (Delphi 2 has no Unicode support)
 -   No drift between JSON + generators and committed generated files
     (golden-file tests for both artifacts)
 
