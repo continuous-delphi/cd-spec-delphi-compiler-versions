@@ -46,6 +46,7 @@ tooling derive from that dataset.
 
     generated/
       CD_DELPHI_VERSIONS.inc
+      DelphiCompilerVersions.pas
 
     tests/
       pwsh/

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "1.0.0",
+  "meta": { "generatedUtcDate": "2026-03-01" },
+  "versions": [
+    {
+      "verDefine": "VER90",
+      "compilerVersion": "9.0",
+      "productName": "Delphi 2",
+      "packageVersion": "20",
+      "regKeyRelativePath": "\\Software\\Borland\\Delphi\\2.0",
+      "supportedBuildSystems": ["DCC"],
+      "supportedPlatforms": ["Win32"],
+      "aliases": ["Delphi2", "D2"]
+    },
+    {
+      "verDefine": "VER320",
+      "compilerVersion": "32.0",
+      "productName": "Delphi 10.2 Tokyo",
+      "packageVersion": "250",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\19.0",
+      "supportedBuildSystems": ["MSBuild"],
+      "supportedPlatforms": ["Win32", "Win64", "macOS32"],
+      "aliases": ["Delphi 10.2", "Tokyo", "10.2 Tokyo"]
+    },
+    {
+      "verDefine": "VER350",
+      "compilerVersion": "35.0",
+      "productName": "Delphi 11 Alexandria",
+      "packageVersion": "280",
+      "regKeyRelativePath": "\\Software\\Embarcadero\\BDS\\22.0",
+      "supportedBuildSystems": ["MSBuild"],
+      "supportedPlatforms": ["Win32", "Win64"],
+      "aliases": ["Delphi 11", "Alexandria", "11 Alexandria"]
+    }
+  ]
+}

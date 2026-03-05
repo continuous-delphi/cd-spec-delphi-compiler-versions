@@ -108,6 +108,14 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
     }
   }
 
+  It 'contains only ASCII characters' {
+    # The .inc file must be preprocessor-safe on all Delphi versions including
+    # Delphi 2 (VER90). Any byte above 0x7F would be misinterpreted.
+    $rawBytes = [System.IO.File]::ReadAllBytes($script:OutPath)
+    $nonAscii = $rawBytes | Where-Object { $_ -gt 0x7F }
+    $nonAscii.Count | Should -Be 0
+  }
+
   AfterAll {
     if ($script:TmpRoot -and (Test-Path -LiteralPath $script:TmpRoot)) {
       Remove-Item -LiteralPath $script:TmpRoot -Recurse -Force -ErrorAction SilentlyContinue
