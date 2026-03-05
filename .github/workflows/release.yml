@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Tag validation runs before checkout -- no workspace is needed for this check.
+      # The glob above is intentionally loose; this step is the authoritative gate.
+      - name: Validate tag format
+        shell: bash
+        run: |
+          if [[ ! "${GITHUB_REF_NAME}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Tag '${GITHUB_REF_NAME}' does not match required format vX.Y.Z"
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Pester
+        run: pwsh -Command "Install-Module Pester -MinimumVersion 5.7.0 -Force -Scope CurrentUser"
+
+      - name: Run tests
+        run: pwsh tests/run-tests.ps1
+
+      - name: Regenerate artifacts
+        run: |
+          pwsh tools/generate-cd-delphi-versions-inc.ps1 -Force
+          pwsh tools/generate-cd-delphi-compiler-versions-pas.ps1 -Force
+
+      - name: Extract version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          DATA_VERSION=$(jq -r '.dataVersion' data/delphi-compiler-versions.json)
+          SCHEMA_VERSION=$(jq -r '.schemaVersion' data/delphi-compiler-versions.json)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "DATA_VERSION=${DATA_VERSION}" >> $GITHUB_ENV
+          echo "SCHEMA_VERSION=${SCHEMA_VERSION}" >> $GITHUB_ENV
+
+      - name: Populate release notes
+        run: |
+          sed "s/vX\.Y\.Z/v${VERSION}/g; s/X\.Y\.Z/${VERSION}/g; s/DATA_VERSION/${DATA_VERSION}/g; s/SCHEMA_VERSION/${SCHEMA_VERSION}/g" \
+            .github/RELEASE_TEMPLATE.md > release-notes.md
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            --title "Delphi Compiler Versions v${VERSION}" \
+            --notes-file release-notes.md \
+            generated/CD_DELPHI_VERSIONS.inc \
+            generated/DelphiCompilerVersions.pas \
+            data/delphi-compiler-versions.json
