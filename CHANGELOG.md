@@ -23,7 +23,7 @@ section here.
 
 ## [1.1.0] - Unreleased
 
-Platform support matrix + Forward Compatibility in INC
+Platform support matrix doc + Forward Compatibility in INC + filenames standardized
 
 ### New tool and generated artifact
 
@@ -41,8 +41,13 @@ dataset to prevent developers from having to edit the .inc file manually.
 special condition.
 
 ### Remove excess define from generator
+
 - Issue #13 `CD_DELPHI_VER###` would likely never be used in place of `VER###`
 
+### PSScriptAnalyzer support
+
+- Issue #15 added linting of the pwsh scripts with the standard PSScriptAnalyzer
+with some minor corrections made.
 
 ## [1.0.0] - 2026-03-05
 
