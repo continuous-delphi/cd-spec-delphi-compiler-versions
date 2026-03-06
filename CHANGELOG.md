@@ -28,17 +28,21 @@ Platform support matrix + Forward Compatibility in INC
 ### New tool and generated artifact
 
 - `tools/generate-platform-support-md.ps1` - generates `PlatformSupport.md`
-from the canonical dataset
+from the canonical dataset for Issue #7
 - `generated/PlatformSupport.md` - visual cross reference of platform
 support by Delphi version
 
 ### CD_DELPHI_VERSIONS.inc forward-compatibility
 
-- If the VERxxx is not found, then we assume a brand new Delphi version is being
-used and the flags are set to the latest version in the dataset to prevent
-developers from having to edit the .inc file manually.
+- Issue #8: If the VERxxx is not found, then we assume a brand new Delphi
+version is being used and the flags are set to the latest version in the
+dataset to prevent developers from having to edit the .inc file manually.
 - The define `CD_DELPHI_VERSION_UNKNOWN` remains set so users can detect this
 special condition.
+
+### Remove excess define from generator
+- Issue #13 `CD_DELPHI_VER###` would likely never be used in place of `VER###`
+
 
 ## [1.0.0] - 2026-03-05
 

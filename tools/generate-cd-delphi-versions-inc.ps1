@@ -243,8 +243,6 @@ for ($i=0; $i -lt $versionCount; $i++) {
   Emit ('{$IFDEF ' + $verDefine + '}')
   Emit '  {$UNDEF CD_DELPHI_VERSION_UNKNOWN}'
 
-  Emit ('  {$DEFINE CD_DELPHI_VER' + $digits + '}')
-
   for ($t=0; $t -lt $tokens.Length; $t++) {
     $tok = $tokens[$t]
     Emit ('  {$DEFINE CD_DELPHI_' + $tok + '}')
@@ -293,8 +291,6 @@ Emit '  CD_DELPHI_VERSION_UNKNOWN remains defined so callers can detect the fall
 Emit '  --------------------------------------------------------------------------- }'
 Emit
 Emit '{$IFDEF CD_DELPHI_VERSION_UNKNOWN}'
-
-Emit ('  {$DEFINE CD_DELPHI_VER' + $lastDigits + '}')
 
 foreach ($tok in $lastTokens) {
   Emit ('  {$DEFINE CD_DELPHI_' + $tok + '}')

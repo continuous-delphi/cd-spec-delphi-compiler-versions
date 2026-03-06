@@ -41,7 +41,6 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
 
   It 'emits expected Delphi 2 tokens' {
     $script:OutText | Should -Match '\{\$IFDEF VER90\}'
-    $script:OutText | Should -Match '\{\$DEFINE CD_DELPHI_VER90\}'
     $script:OutText | Should -Match '\{\$DEFINE CD_DELPHI_2\}'
     $script:OutText | Should -Match '\{\$DEFINE CD_DELPHI_2_OR_LATER\}'
     $script:OutText | Should -Match '\{\$DEFINE CD_DELPHI_COMPILER_VERSION_9\}'
