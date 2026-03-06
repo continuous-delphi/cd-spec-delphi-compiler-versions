@@ -21,7 +21,7 @@ section here.
 
 ---
 
-## [1.1.0] - Unreleased
+## [1.1.0] - 2026-03-06
 
 Platform support matrix doc + Forward Compatibility in INC + filenames standardized
 
