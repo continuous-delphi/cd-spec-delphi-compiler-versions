@@ -21,7 +21,7 @@ Describe 'DelphiCompilerVersions.pas generator' {
     & $script:GenPath -DataPath $script:DataPath -OutPath $outPath -Force | Out-Null
 
     $script:OutPath = $outPath
-    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8
+    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8NoBOM
   }
 
   # -------------------------------------------------------------------------

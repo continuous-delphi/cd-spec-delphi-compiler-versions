@@ -21,7 +21,7 @@ Describe 'DelphiCompilerVersions.pas generator (VER180/VER185 compatibility)' {
     & $genPath -DataPath $dataPath -OutPath $outPath -Force | Out-Null
 
     $script:OutPath = $outPath
-    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8
+    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8NoBOM
   }
 
   It 'VER180 initialization block is wrapped in IFNDEF VER185' {

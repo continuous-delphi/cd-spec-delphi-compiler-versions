@@ -21,7 +21,7 @@ Describe 'DELPHI_COMPILER_VERSIONS.inc generator (VER180/VER185 compatibility)' 
     & $genPath -DataPath $dataPath -OutPath $outPath -Force | Out-Null
 
     $script:OutPath = $outPath
-    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8
+    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8NoBOM
   }
 
   It 'wraps VER180 block in IFNDEF VER185 guard' {

@@ -68,7 +68,7 @@ function Get-CompilerVersionsData {
 
   Assert-FileExists -Path $Path
 
-  $jsonText = Get-Content -LiteralPath $Path -Raw -Encoding UTF8
+  $jsonText = Get-Content -LiteralPath $Path -Raw -Encoding UTF8NoBOM
   $data = $jsonText | ConvertFrom-Json
 
   if (-not $data.schemaVersion) { throw 'Missing schemaVersion in JSON.' }
@@ -408,7 +408,7 @@ $newText = $newText -replace "`r",   "`n"
 $newText = $newText -replace "`n",   "`r`n"
 
 if ((-not $Force) -and (Test-Path -LiteralPath $OutPath)) {
-  $existing = Get-Content -LiteralPath $OutPath -Raw -Encoding UTF8
+  $existing = Get-Content -LiteralPath $OutPath -Raw -Encoding UTF8NoBOM
   if ($existing -eq $newText) {
     Write-Output "No changes: $OutPath"
     exit 0

@@ -21,7 +21,7 @@ Describe 'DELPHI_COMPILER_VERSIONS.inc generator' {
     & $genPath -DataPath $dataPath -OutPath $outPath -Force | Out-Null
 
     $script:OutPath = $outPath
-    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8
+    $script:OutText = Get-Content -LiteralPath $outPath -Raw -Encoding UTF8NoBOM
   }
 
   It 'writes the output file' {
@@ -130,7 +130,7 @@ Describe 'delphi-compiler-versions.json data integrity' {
 
     if (-not (Test-Path -LiteralPath $dataPath)) { throw "Canonical JSON not found: $dataPath" }
 
-    $script:Data = Get-Content -LiteralPath $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $script:Data = Get-Content -LiteralPath $dataPath -Raw -Encoding UTF8NoBOM | ConvertFrom-Json
   }
 
   It 'aliases are unique across all versions' {

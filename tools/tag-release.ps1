@@ -89,7 +89,7 @@ if (-not (Test-Path -LiteralPath $dataFile)) {
 }
 
 try {
-  $data = Get-Content -LiteralPath $dataFile -Raw -Encoding UTF8 | ConvertFrom-Json
+  $data = Get-Content -LiteralPath $dataFile -Raw -Encoding UTF8NoBOM | ConvertFrom-Json
 } catch {
   Fail "Failed to parse JSON from $dataFile`n$_"
 }
