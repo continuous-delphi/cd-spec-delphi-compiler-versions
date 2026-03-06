@@ -83,9 +83,7 @@ tooling derive from that dataset.
       PlatformSupport.md                     # visual platform support matrix
 
     schemas/
-      1.0.0/
-        delphi-compiler-versions.schema.json # immutable versioned schema
-      delphi-compiler-versions.schema.json   # latest version / stable alias
+      delphi-compiler-versions.schema.json   # JSON Schema for the dataset
 
     tools/
       generate-delphi-compiler-versions-inc.ps1
@@ -99,7 +97,6 @@ tooling derive from that dataset.
     .github/workflows/release.yml           # automated releases
 ```
 
-- The schema is versioned and immutable once published.
 - The generated include file and source file are generated and _never manually edited_.
 - Tests enforce deterministic output and drift protection.
 - GitHub Action workflow enforces passing tests, regenerates artifacts, and populates
@@ -108,7 +105,7 @@ release notes from `CHANGELOG.md`
 Canonical schema `$id`:
 
 ```text
-  https://continuous-delphi.github.io/delphi-compiler-versions/schemas/1.0.0/delphi-compiler-versions.schema.json
+  https://continuous-delphi.github.io/delphi-compiler-versions/schemas/delphi-compiler-versions.schema.json
 ```
 
 _GitHub Pages is enabled on the repository to serve the schema file._
