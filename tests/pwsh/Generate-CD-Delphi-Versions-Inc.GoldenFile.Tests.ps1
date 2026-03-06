@@ -3,7 +3,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-Describe 'CD_DELPHI_VERSIONS.inc golden file consistency' {
+Describe 'DELPHI_COMPILER_VERSIONS.inc golden file consistency' {
 
   It 'committed include file matches generator output from canonical JSON' {
 
@@ -11,14 +11,14 @@ Describe 'CD_DELPHI_VERSIONS.inc golden file consistency' {
 
     $genPath  = Join-Path $repoRoot 'tools\generate-cd-delphi-versions-inc.ps1'
     $dataPath = Join-Path $repoRoot 'data\delphi-compiler-versions.json'
-    $incPath  = Join-Path $repoRoot 'generated\CD_DELPHI_VERSIONS.inc'
+    $incPath  = Join-Path $repoRoot 'generated\DELPHI_COMPILER_VERSIONSinc'
 
     if (-not (Test-Path -LiteralPath $genPath))  { throw "Generator not found: $genPath" }
     if (-not (Test-Path -LiteralPath $dataPath)) { throw "Canonical JSON not found: $dataPath" }
     if (-not (Test-Path -LiteralPath $incPath))  { throw "Committed include file not found: $incPath" }
 
     $tmpRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('cd-delphi-versions-golden-' + [Guid]::NewGuid().ToString('N'))
-    $tmpOut  = Join-Path $tmpRoot 'CD_DELPHI_VERSIONS.inc'
+    $tmpOut  = Join-Path $tmpRoot 'DELPHI_COMPILER_VERSIONS.inc'
 
     try {
         New-Item -ItemType Directory -Path $tmpRoot | Out-Null
@@ -45,7 +45,7 @@ Describe 'CD_DELPHI_VERSIONS.inc golden file consistency' {
         }
 
         $same | Should -BeTrue -Because @"
-generated/CD_DELPHI_VERSIONS.inc is out of date.
+generated/DELPHI_COMPILER_VERSIONS.inc is out of date.
 
 Run:
   pwsh tools/generate-cd-delphi-versions-inc.ps1

@@ -32,7 +32,7 @@ from the canonical dataset for Issue #7
 - `generated/PlatformSupport.md` - visual cross reference of platform
 support by Delphi version
 
-### CD_DELPHI_VERSIONS.inc forward-compatibility
+### DELPHI_COMPILER_VERSIONS.inc forward-compatibility
 
 - Issue #8: If the VERxxx is not found, then we assume a brand new Delphi
 version is being used and the flags are set to the latest version in the
@@ -59,14 +59,14 @@ schema at v1.0.0
 
 ### Generated artifacts
 
-- `generated/CD_DELPHI_VERSIONS.inc` - compiler detection include file for
+- `generated/DELPHI_COMPILER_VERSIONS.inc` - compiler detection include file for
 use in Delphi projects
 - `generated/DelphiCompilerVersions.pas` - runtime lookup unit for Delphi
 compiler information
 
 ### Tools
 
-- `tools/generate-cd-delphi-versions-inc.ps1` - generates `CD_DELPHI_VERSIONS.inc`
+- `tools/generate-cd-delphi-versions-inc.ps1` - generates `DELPHI_COMPILER_VERSIONS.inc`
 from the canonical dataset
 - `tools/generate-cd-delphi-compiler-versions-pas.ps1` - generates
 `DelphiCompilerVersions.pas` from the canonical dataset

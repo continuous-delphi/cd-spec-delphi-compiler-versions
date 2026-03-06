@@ -3,7 +3,7 @@
 Source repo: https://github.com/continuous-delphi/delphi-compiler-versions
 
 **Direct downloads:**
-- [CD_DELPHI_VERSIONS.inc](https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/vX.Y.Z/CD_DELPHI_VERSIONS.inc)
+- [DELPHI_COMPILER_VERSIONS.inc](https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/vX.Y.Z/DELPHI_COMPILER_VERSIONS.inc)
 - [DelphiCompilerVersions.pas](https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/vX.Y.Z/DelphiCompilerVersions.pas)
 - [PlatformSupport.md](https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/vX.Y.Z/PlatformSupport.md)
 - [delphi-compiler-versions.json](https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/vX.Y.Z/delphi-compiler-versions.json)
@@ -30,7 +30,7 @@ The following files are attached to this release.
 
 | File | Purpose |
 |------|---------|
-| `CD_DELPHI_VERSIONS.inc` | Conditional defines for Delphi compiler detection |
+| `DELPHI_COMPILER_VERSIONS.inc` | Conditional defines for Delphi compiler detection |
 | `DelphiCompilerVersions.pas` | Runtime lookup unit for Delphi compiler information |
 | `PlatformSupport.md` | Visual cross reference of platforms supported by Delphi version |
 | `delphi-compiler-versions.json` | Canonical dataset used by generators and tools |
@@ -42,7 +42,7 @@ The following files are attached to this release.
 ## Delphi include file
 
 ```pascal
-{$I CD_DELPHI_VERSIONS.inc}
+{$I DELPHI_COMPILER_VERSIONS.inc}
 
 {$IFDEF VER360}
   // Delphi 12 Athens

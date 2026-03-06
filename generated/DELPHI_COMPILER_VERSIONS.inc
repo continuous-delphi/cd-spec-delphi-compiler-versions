@@ -1,6 +1,7 @@
 {
-  CD_DELPHI_VERSIONS.inc
-  Generated from data/delphi-compiler-versions.json
+  DELPHI_COMPILER_VERSIONS.inc
+  Generated from: data/delphi-compiler-versions.json
+  Home Repo: https://github.com/continuous-delphi/delphi-compiler-versions
   License: MIT
 }
 

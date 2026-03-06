@@ -36,7 +36,7 @@ tooling derive from that dataset.
       delphi-compiler-versions.json          # current dataset (Delphi 2+)
 
     generated/                               # Files generated from delphi-compiler-versions.json
-      CD_DELPHI_VERSIONS.inc                 # for: {$IFDEF CD_DELPHI_FLORENCE_OR_LATER}
+      DELPHI_COMPILER_VERSIONS.inc           # for: {$IFDEF CD_DELPHI_FLORENCE_OR_LATER}
       DelphiCompilerVersions.pas             # for: TDelphiPlatform, DelphiVersions array...
       PlatformSupport.md                     # visual platform support matrix
 
@@ -143,7 +143,7 @@ Valid platform values: `Win32`, `Win64`, `macOS32`, `macOS64`, `macOSARM64`,
 
 The generated file:
 
-    generated/CD_DELPHI_VERSIONS.inc
+    generated/DELPHI_COMPILER_VERSIONS.inc
 
 provides Delphi projects with standardized compiler version and
 capability defines derived directly from the canonical dataset.

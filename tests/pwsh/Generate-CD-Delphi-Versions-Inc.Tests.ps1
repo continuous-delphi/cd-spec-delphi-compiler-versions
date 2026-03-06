@@ -3,7 +3,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-Describe 'CD_DELPHI_VERSIONS.inc generator' {
+Describe 'DELPHI_COMPILER_VERSIONS.inc generator' {
 
   BeforeAll {
     $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
@@ -16,7 +16,7 @@ Describe 'CD_DELPHI_VERSIONS.inc generator' {
 
     $script:TmpRoot = Join-Path ([System.IO.Path]::GetTempPath()) ('cd-delphi-versions-tests-' + [Guid]::NewGuid().ToString('N'))
     New-Item -ItemType Directory -Path $script:TmpRoot | Out-Null
-    $outPath = Join-Path $script:TmpRoot 'CD_DELPHI_VERSIONS.inc'
+    $outPath = Join-Path $script:TmpRoot 'DELPHI_COMPILER_VERSIONS.inc'
 
     & $genPath -DataPath $dataPath -OutPath $outPath -Force | Out-Null
 

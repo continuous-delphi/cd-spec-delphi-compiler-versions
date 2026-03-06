@@ -1,5 +1,5 @@
 # tools/generate-cd-delphi-versions-inc.ps1
-# Generates: generated/CD_DELPHI_VERSIONS.inc
+# Generates: generated/DELPHI_COMPILER_VERSIONS.inc
 # Requires: PowerShell 7+
 
 [CmdletBinding()]
@@ -8,7 +8,7 @@ param(
   [string] $DataPath = (Join-Path $PSScriptRoot '..\data\delphi-compiler-versions.json'),
 
   [Parameter()]
-  [string] $OutPath  = (Join-Path $PSScriptRoot '..\generated\CD_DELPHI_VERSIONS.inc'),
+  [string] $OutPath  = (Join-Path $PSScriptRoot '..\generated\DELPHI_COMPILER_VERSIONS.inc'),
 
   [Parameter()]
   [switch] $Force
@@ -185,8 +185,9 @@ function Get-MinTokenForIndex([int]$idx) {
 }
 
 Emit '{'
-Emit '  CD_DELPHI_VERSIONS.inc'
-Emit '  Generated from data/delphi-compiler-versions.json'
+Emit '  DELPHI_COMPILER_VERSIONS.inc'
+Emit '  Generated from: data/delphi-compiler-versions.json'
+Emit '  Home Repo: https://github.com/continuous-delphi/delphi-compiler-versions'
 Emit '  License: MIT'
 Emit '}'
 Emit

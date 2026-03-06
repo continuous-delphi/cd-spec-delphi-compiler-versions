@@ -69,7 +69,7 @@ jobs:
           gh release create "${GITHUB_REF_NAME}" \
             --title "Delphi Compiler Versions v${VERSION}" \
             --notes-file release-notes.md \
-            generated/CD_DELPHI_VERSIONS.inc \
+            generated/DELPHI_COMPILER_VERSIONS.inc \
             generated/DelphiCompilerVersions.pas \
             generated/PlatformSupport.md \
             data/delphi-compiler-versions.json
