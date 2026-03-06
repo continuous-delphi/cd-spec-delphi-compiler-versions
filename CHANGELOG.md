@@ -29,6 +29,8 @@ section here.
 produce Delphi 2 code but that introduced a bug when Exit(true); was split across
 two lines. Fixed in #17
 
+- `ci` workflow added for running tests after every commit for #18
+
 ## [1.1.0] - 2026-03-06
 
 Platform support matrix doc + Forward Compatibility in INC + filenames standardized
