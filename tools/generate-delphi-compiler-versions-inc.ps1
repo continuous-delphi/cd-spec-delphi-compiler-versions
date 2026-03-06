@@ -308,6 +308,39 @@ if ($lastPkgTok) {
 Emit '{$ENDIF}'
 Emit
 
+# ---------------- _OR_LATER cascade ----------------
+# Each version's _OR_LATER tokens are only set inside its own {$IFDEF VERxxx} block.
+# This cascade propagates them downward so that, e.g., CD_DELPHI_2_OR_LATER is
+# defined for any compiler from Delphi 2 onwards, not just when compiling on Delphi 2.
+# Runs newest-to-oldest so each step can rely on the one above it already being set.
+
+Emit '{ ---------------------------------------------------------------------------'
+Emit '  _OR_LATER cascade'
+Emit '  Propagates version tokens downward so CD_DELPHI_X_OR_LATER is defined for'
+Emit '  all compilers at version X and above, not only the exact version X.'
+Emit '  --------------------------------------------------------------------------- }'
+Emit
+
+for ($i = $versionCount - 1; $i -ge 1; $i--) {
+  $curr  = $versions[$i]
+  $prev  = $versions[$i - 1]
+
+  $currToks = @(Get-DefinesForProductName ([string]$curr.productName))
+  $prevToks = @(Get-DefinesForProductName ([string]$prev.productName))
+
+  if ($currToks.Length -eq 0 -or $prevToks.Length -eq 0) { continue }
+
+  # Trigger on the first (numeric/primary) token of the current version
+  $trigger = 'CD_DELPHI_' + $currToks[0] + '_OR_LATER'
+
+  Emit ('{$IFDEF ' + $trigger + '}')
+  foreach ($tok in $prevToks) {
+    Emit ('  {$DEFINE CD_DELPHI_' + $tok + '_OR_LATER}')
+  }
+  Emit '{$ENDIF}'
+  Emit
+}
+
 # ---------------- Capabilities section (range guarded, optimistic for open-ended) ----------------
 
 # Collect all platforms/buildsystems present in dataset
