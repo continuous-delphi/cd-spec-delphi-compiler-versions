@@ -379,8 +379,10 @@ var
 begin
   Result := False;
   if (ACsv = '') or (AToken = '') then
+  begin
     Result := False;
     Exit;
+  end;
 
   StartPos := 1;
   for I := 1 to Length(ACsv) + 1 do
@@ -389,8 +391,10 @@ begin
     begin
       Part := Trim(Copy(ACsv, StartPos, I - StartPos));
       if (Part <> '') and TextEqualsIgnoreCase(Part, AToken) then
+      begin
         Result := True;
         Exit;
+      end;
       StartPos := I + 1;
     end;
   end;
