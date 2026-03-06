@@ -17,6 +17,9 @@
 #   - Tag does not already exist locally or on origin
 
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
+# tools/tag-release.ps1
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '',
+  Justification = 'Write-Host is required for colored interactive console output.')]
 param(
   [Parameter(Mandatory=$true, HelpMessage='Semantic version to tag, e.g. 1.0.0')]
   [ValidatePattern('^[0-9]+\.[0-9]+\.[0-9]+$')]
@@ -34,17 +37,17 @@ $ErrorActionPreference = 'Stop'
 # ---------------------------------------------------------------------------
 
 function Write-Step([string]$Message) {
-  Write-Output "  $Message" -ForegroundColor Cyan
+  Write-Host "  $Message" -ForegroundColor Cyan
 }
 
 function Write-Ok([string]$Message) {
-  Write-Output "  ok  $Message" -ForegroundColor Green
+  Write-Host "  ok  $Message" -ForegroundColor Green
 }
 
 function Fail([string]$Message) {
-  Write-Output ""
-  Write-Output "FAIL  $Message" -ForegroundColor Red
-  Write-Output ""
+  Write-Host ""
+  Write-Host "FAIL  $Message" -ForegroundColor Red
+  Write-Host ""
   throw $Message
 }
 
@@ -67,13 +70,13 @@ $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $dataFile = Join-Path $repoRoot 'data' 'delphi-compiler-versions.json'
 $tag      = "v$Version"
 
-Write-Output ""
-Write-Output "delphi-compiler-versions  tag-release" -ForegroundColor White
-Write-Output "======================================" -ForegroundColor White
-Write-Output "  Version : $Version"
-Write-Output "  Tag     : $tag"
-Write-Output "  Repo    : $repoRoot"
-Write-Output ""
+Write-Host ""
+Write-Host "delphi-compiler-versions  tag-release" -ForegroundColor White
+Write-Host "======================================" -ForegroundColor White
+Write-Host "  Version : $Version"
+Write-Host "  Tag     : $tag"
+Write-Host "  Repo    : $repoRoot"
+Write-Host ""
 
 # ---------------------------------------------------------------------------
 # Precondition 1: data file exists and is valid JSON
@@ -144,7 +147,7 @@ try {
   $defaultBranch = if ($LASTEXITCODE -eq 0 -and $originHead) {
     $originHead.Trim() -replace '^origin/', ''
   } else {
-    Write-Output "  warn  origin/HEAD not set; assuming default branch is 'main'" -ForegroundColor Yellow
+    Write-Host "  warn  origin/HEAD not set; assuming default branch is 'main'" -ForegroundColor Yellow
     'main'
   }
 
@@ -153,7 +156,7 @@ try {
   }
 
   if ($SkipBranchCheck -and $branch -ne $defaultBranch) {
-    Write-Output "  warn  Not on '$defaultBranch' (on '$branch'); -SkipBranchCheck override active" -ForegroundColor Yellow
+    Write-Host "  warn  Not on '$defaultBranch' (on '$branch'); -SkipBranchCheck override active" -ForegroundColor Yellow
   } else {
     Write-Ok "on branch '$defaultBranch'"
   }
@@ -233,9 +236,9 @@ try {
   # All preconditions passed - confirm and tag
   # -------------------------------------------------------------------------
 
-  Write-Output ""
-  Write-Output "All checks passed." -ForegroundColor Green
-  Write-Output ""
+  Write-Host ""
+  Write-Host "All checks passed." -ForegroundColor Green
+  Write-Host ""
 
   if ($PSCmdlet.ShouldProcess(
         "origin  (tag: $tag  message: '$tagMsg')",
@@ -251,38 +254,38 @@ try {
       Invoke-Git push origin $tag | Out-Null
       Write-Ok "tag pushed"
 
-      Write-Output ""
-      Write-Output "Released: $tag" -ForegroundColor Green
-      Write-Output "The GitHub Actions release workflow should run for this tag." -ForegroundColor Green
-      Write-Output ""
+      Write-Host ""
+      Write-Host "Released: $tag" -ForegroundColor Green
+      Write-Host "The GitHub Actions release workflow should run for this tag." -ForegroundColor Green
+      Write-Host ""
 
     } catch {
 
-      Write-Output ""
-      Write-Output "ERROR: Tag/push failed." -ForegroundColor Red
-      Write-Output $_ -ForegroundColor DarkRed
-      Write-Output ""
-      Write-Output "Partial failure - check the state and clean up if needed:" -ForegroundColor Yellow
+      Write-Host ""
+      Write-Host "ERROR: Tag/push failed." -ForegroundColor Red
+      Write-Host $_ -ForegroundColor DarkRed
+      Write-Host ""
+      Write-Host "Partial failure - check the state and clean up if needed:" -ForegroundColor Yellow
 
       & git show-ref --tags --verify --quiet "refs/tags/$tag" 2>$null
       if ($LASTEXITCODE -eq 0) {
-        Write-Output "  Local tag exists. If the push failed, delete it with:" -ForegroundColor Yellow
-        Write-Output "    git tag -d $tag" -ForegroundColor Yellow
+        Write-Host "  Local tag exists. If the push failed, delete it with:" -ForegroundColor Yellow
+        Write-Host "    git tag -d $tag" -ForegroundColor Yellow
       }
 
-      Write-Output "  Verify origin does not have a partial push:" -ForegroundColor Yellow
-      Write-Output "    git ls-remote --tags origin refs/tags/$tag" -ForegroundColor Yellow
-      Write-Output ""
+      Write-Host "  Verify origin does not have a partial push:" -ForegroundColor Yellow
+      Write-Host "    git ls-remote --tags origin refs/tags/$tag" -ForegroundColor Yellow
+      Write-Host ""
       throw
 
     }
 
   } else {
     # -WhatIf was specified - echo what would happen without doing it
-    Write-Output "  WhatIf: would create annotated tag and push to origin" -ForegroundColor Yellow
-    Write-Output "    Tag    : $tag" -ForegroundColor Yellow
-    Write-Output "    Message: $tagMsg" -ForegroundColor Yellow
-    Write-Output ""
+    Write-Host "  WhatIf: would create annotated tag and push to origin" -ForegroundColor Yellow
+    Write-Host "    Tag    : $tag" -ForegroundColor Yellow
+    Write-Host "    Message: $tagMsg" -ForegroundColor Yellow
+    Write-Host ""
   }
 
 } finally {
