@@ -48,8 +48,9 @@ git submodule add https://github.com/continuous-delphi/delphi-compiler-versions 
   vendor/delphi-compiler-versions
 ```
 
-Then add the path for `vendor/delphi-compiler-versions/generated` to your search path.
-The tooling and tests found in the rest of the repository can safely be ignored.
+Then add the desired files from `vendor/delphi-compiler-versions/generated` to your project.
+(Typically the `DELPHI_COMPILER_VERSIONS.inc` file)  The tooling and tests found in the
+rest of the repository can be ignored.
 
 To update to a new version of the generated files:
 ```bash
