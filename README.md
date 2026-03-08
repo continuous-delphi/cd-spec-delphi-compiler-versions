@@ -300,10 +300,10 @@ This specification ensures that:
 This repository is currently `incubator`. It will graduate to `stable`
 once:
 
--   The schema is considered frozen at `1.x`
--   CI validation is in place
--   At least one downstream tool consumes the dataset
--   No breaking schema changes are anticipated
+- [x] The schema is considered frozen at `1.x`
+- [x] CI validation is in place
+- At least one downstream tool consumes the dataset
+- [x] No breaking schema changes are anticipated
 
 Until graduation, breaking changes may occur.
 
