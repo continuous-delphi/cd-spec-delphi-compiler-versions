@@ -1,6 +1,6 @@
 # delphi-compiler-versions
 
-![delphi-compiler-versions logo](https://github.com/continuous-delphi/.github/blob/main/profile/delphi-compiler-versions-480x270.png?raw=true)
+![delphi-compiler-versions logo](https://continuous-delphi.github.io/assets/logos/delphi-compiler-versions-480x270.png)
 
 [![CI](https://github.com/continuous-delphi/delphi-compiler-versions/actions/workflows/ci.yml/badge.svg)](https://github.com/continuous-delphi/delphi-compiler-versions/actions/workflows/ci.yml)
 ![Status](https://img.shields.io/badge/status-incubator-orange)
@@ -309,7 +309,8 @@ once:
 
 Until graduation, breaking changes may occur.
 
-![continuous-delphi logo](https://github.com/continuous-delphi/.github/blob/main/profile/ContinuousDelphi-gray-480x270.png?raw=true)
+
+![continuous-delphi logo](https://continuous-delphi.github.io/assets/logos/continuous-delphi-480x270.png)
 
 ------------------------------------------------------------------------
 
