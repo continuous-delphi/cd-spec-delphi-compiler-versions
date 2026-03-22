@@ -298,28 +298,11 @@ This specification ensures that:
 
 ------------------------------------------------------------------------
 
-## Maturity
-
-This repository is currently `incubator`. It will graduate to `stable`
-once:
-
-- [x] The schema is considered frozen at `1.x`
-- [x] CI validation is in place
-- At least one downstream tool consumes the dataset
-- [x] No breaking schema changes are anticipated
-
-Until graduation, breaking changes may occur.
-
 
 ![continuous-delphi logo](https://continuous-delphi.github.io/assets/logos/continuous-delphi-480x270.png)
 
-------------------------------------------------------------------------
-
 ## Part of Continuous Delphi
 
-This repository follows the Continuous Delphi organization taxonomy. See
-[cd-meta-org](https://github.com/continuous-delphi/cd-meta-org) for navigation and governance.
+This tool is part of the [Continuous-Delphi](https://github.com/continuous-delphi)
+ecosystem, focused on improving engineering discipline for long-lived Delphi systems.
 
-- `docs/org-taxonomy.md` -- naming and tagging conventions
-- `docs/versioning-policy.md` -- release and versioning rules
-- `docs/repo-lifecycle.md` -- lifecycle states and graduation criteria
