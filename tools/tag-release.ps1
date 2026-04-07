@@ -247,7 +247,7 @@ try {
     try {
 
       Write-Step "Creating tag $tag..."
-      Invoke-Git tag -a $tag -m $tagMsg
+      Invoke-Git tag -s $tag -m $tagMsg
       Write-Ok "tag created"
 
       Write-Step "Pushing tag to origin..."
