@@ -20,6 +20,11 @@ Note: The `tag-release` script will fail if it does not find a matching version
 section here.
 
 ---
+## [1.6.0] - 2026-04-07
+
+- RTLVersion added to TDelphiVersion within the generated DelphiCompilerVersions.pas
+  [#26](https://github.com/continuous-delphi/delphi-compiler-versions/issues/26)
+
 ## [1.5.0] - 2026-04-07
 
 - License headers added to generators

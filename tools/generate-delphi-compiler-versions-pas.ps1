@@ -227,6 +227,8 @@ $null = $sb.AppendLine('    RegKeyRelativePath: string;')
 $null = $sb.AppendLine('    SupportedPlatforms: TDelphiPlatforms;')
 $null = $sb.AppendLine('    SupportedBuildSystems: TDelphiBuildSystems;')
 $null = $sb.AppendLine('    AliasesCsv: string;')
+$null = $sb.AppendLine()
+$null = $sb.AppendLine('    function RTLVersion:string;');
 $null = $sb.AppendLine('  end;')
 $null = $sb.AppendLine()
 $null = $sb.AppendLine('  PDelphiVersion = ^TDelphiVersion;')
@@ -393,6 +395,15 @@ $null = $sb.AppendLine('begin')
 $null = $sb.AppendLine('  Result := DelphiVersions[High(DelphiVersions)];')
 $null = $sb.AppendLine('end;')
 $null = $sb.AppendLine()
+$null = $sb.AppendLine('function TDelphiVersion.RTLVersion:string;')
+$null = $sb.AppendLine('begin')
+$null = $sb.AppendLine('  // special Delphi 2007 quirk, unlikely to re-occur')
+$null = $sb.AppendLine('  // not really worth a separate data element')
+$null = $sb.AppendLine("  if CompilerVersion='18.5' then Exit('18.0')")
+$null = $sb.AppendLine('  else Exit(CompilerVersion);')
+$null = $sb.AppendLine('end;')
+$null = $sb.AppendLine()
+
 # Emit initialization section: assign CurrentDelphiCompilerVersion via $IFDEF chain.
 # IsCurrentDelphiCompilerVersionKnown stays False (default) when the compiler is not
 # in the dataset. VER180 is guarded with IFNDEF VER185 because Delphi 2007

@@ -61,6 +61,8 @@ type
     SupportedPlatforms: TDelphiPlatforms;
     SupportedBuildSystems: TDelphiBuildSystems;
     AliasesCsv: string;
+
+    function RTLVersion:string;
   end;
 
   PDelphiVersion = ^TDelphiVersion;
@@ -445,6 +447,14 @@ end;
 function GetLatestDelphiVersion: TDelphiVersion;
 begin
   Result := DelphiVersions[High(DelphiVersions)];
+end;
+
+function TDelphiVersion.RTLVersion:string;
+begin
+  // special Delphi 2007 quirk, unlikely to re-occur
+  // not really worth a separate data element
+  if CompilerVersion='18.5' then Exit('18.0')
+  else Exit(CompilerVersion);
 end;
 
 initialization
