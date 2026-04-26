@@ -30,13 +30,13 @@ You can download these manually in [Releases](https://github.com/continuous-delp
 For scripted updates use curl:
 
 ```bash
-curl -L -O https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/v1.1.0/DELPHI_COMPILER_VERSIONS.inc
+curl -L -O https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/v1.6.0/DELPHI_COMPILER_VERSIONS.inc
 ```
 
 or PowerShell:
 
 ```powershell
-Invoke-WebRequest -Uri "https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/v1.1.0/DELPHI_COMPILER_VERSIONS.inc" -OutFile "DELPHI_COMPILER_VERSIONS.inc"
+Invoke-WebRequest -Uri "https://github.com/continuous-delphi/delphi-compiler-versions/releases/download/v1.6.0/DELPHI_COMPILER_VERSIONS.inc" -OutFile "DELPHI_COMPILER_VERSIONS.inc"
 ```
 
 ### Quick start - submodule
@@ -176,8 +176,8 @@ all point releases within the version family**. Where a platform was introduced 
 point release (rather than the initial release of the version family), this is noted in the
 entry's `notes` array.
 
-Valid platform values: `Win32`, `Win64`, `macOS32`, `macOS64`, `macOSARM64`,
-`Linux64`, `iOS`, `iOSSimulator`, `Android32`, `Android64`.
+Valid platform values: `Win32`, `Win64`, `macOS32`, `macOS64`, `macOSARM64`, `Linux64`, `iOS32`,
+  `iOS64`, `iOSSimulator32`, `iOSSimulator64`, `Android32`, `Android64`, `WinARM64EC`.
 
 ------------------------------------------------------------------------
 
