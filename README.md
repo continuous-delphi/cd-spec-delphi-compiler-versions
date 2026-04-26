@@ -306,3 +306,20 @@ This specification ensures that:
 This tool is part of the [Continuous-Delphi](https://github.com/continuous-delphi)
 ecosystem, focused on improving engineering discipline for long-lived Delphi systems.
 
+## Related Continuous Delphi Tools
+
+This repository provides the canonical Delphi compiler/version dataset. For
+toolchain discovery on real machines, see
+[delphi-inspect](https://github.com/continuous-delphi/delphi-inspect), which uses
+this data to resolve aliases, inspect installed Delphi versions, and select a
+ready toolchain for a requested platform and build system.
+
+For MSBuild-based build automation, see
+[delphi-msbuild](https://github.com/continuous-delphi/delphi-msbuild). It can be
+used standalone with an explicit Delphi `RootDir`, or paired with
+`delphi-inspect` so build scripts can discover a suitable Delphi installation and
+pipe it directly into an MSBuild invocation.
+
+Together, these projects form a data-driven workflow: this repository defines
+the compiler/version facts, `delphi-inspect` discovers the installed toolchain,
+and `delphi-msbuild` performs the build.
